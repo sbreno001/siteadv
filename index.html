@@ -843,13 +843,6 @@
             <div class="swiper-wrapper" id="reviews-wrapper">
                 <!-- Avaliações serão carregadas dinamicamente aqui pelo JavaScript -->
             </div>
-
-            <!-- Paginação do Swiper (bolinhas de navegação) -->
-            <div class="swiper-pagination"></div>
-
-            <!-- Botões de navegação (próximo/anterior) do Swiper -->
-            <div class="swiper-button-prev" style="color: var(--gold);"></div>
-            <div class="swiper-button-next" style="color: var(--gold);"></div>
         </div>
 
         <div style="text-align: center; margin-top: 40px;">
@@ -1276,10 +1269,7 @@
                     reverseDirection: false // false = vai para a direita (padrão) | true = vai para esquerda
                 },
                 
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
+                // Paginação: Removida conforme solicitação do usuário
                 
                 navigation: {
                     nextEl: '.swiper-button-next',
