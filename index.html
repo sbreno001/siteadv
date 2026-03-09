@@ -625,14 +625,13 @@
         }
 
         .google-verify {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            position: static; /* Remove o posicionamento absoluto */
+            margin-top: 5px; /* Ajusta a margem superior */
+            justify-content: flex-start; /* Alinha o conteúdo à esquerda */
+            color: var(--text-gray); /* Torna a cor mais visível */
+            order: 4; /* Avaliação do Google vem por último */
+            font-size: 0.6rem; /* Reduz um pouco o tamanho da fonte */
+            white-space: nowrap; /* Evita que o texto quebre em várias linhas desnecessariamente */
         }
 
         @media (max-width: 992px) {
@@ -1163,87 +1162,6 @@
                 emojis: '🙏1',
                 verificadoGoogle: true
             },
-            {
-                nome: 'Ricardo Santos macena',
-                numAvaliacoes: 1, 
-                tempoAtras: '4 meses atrás',
-                texto: '', 
-                estrelas: 5, 
-                emojis: '', 
-                verificadoGoogle: true
-            },
-            {
-                nome: 'Lopes L.',
-                numAvaliacoes: 3,
-                tempoAtras: '4 meses atrás',
-                texto: '',
-                estrelas: 5,
-                emojis: '',
-                verificadoGoogle: true
-            },
-            {
-                nome: 'Elton John',
-                numAvaliacoes: 2,
-                tempoAtras: '4 meses atrás',
-                texto: '',
-                estrelas: 5,
-                emojis: '',
-                verificadoGoogle: true
-            },
-            {
-                nome: 'Elayne Marcelly',
-                numAvaliacoes: null, 
-                tempoAtras: '4 meses atrás',
-                texto: '',
-                estrelas: 5,
-                emojis: '',
-                verificadoGoogle: true
-            },
-            {
-                nome: 'Alexandreboy@gmail.com Alexandreboy',
-                numAvaliacoes: 1,
-                tempoAtras: '4 meses atrás',
-                texto: '',
-                estrelas: 5,
-                emojis: '🙏1',
-                verificadoGoogle: true
-            },
-            {
-                nome: 'sergio Nathan',
-                numAvaliacoes: 2,
-                tempoAtras: '4 meses atrás',
-                texto: '',
-                estrelas: 5,
-                emojis: '🙏1',
-                verificadoGoogle: true
-            },
-            {
-                nome: 'Oliveira Barros',
-                numAvaliacoes: null, 
-                tempoAtras: '4 meses atrás',
-                texto: '',
-                estrelas: 5,
-                emojis: '',
-                verificadoGoogle: true
-            },
-            {
-                nome: 'Ramonilson Moreira',
-                numAvaliacoes: 1,
-                tempoAtras: 'um ano atrás',
-                texto: '',
-                estrelas: 5,
-                emojis: '🙏1',
-                verificadoGoogle: true
-            },
-            {
-                nome: 'Lucas Matheus',
-                numAvaliacoes: null, 
-                tempoAtras: 'um ano atrás',
-                texto: '',
-                estrelas: 5,
-                emojis: '',
-                verificadoGoogle: true
-            }
         ];
 
         // Função para renderizar as avaliações
@@ -1286,7 +1204,6 @@
                 autoplay: {
                     delay: 2500, // Tempo de espera entre os slides (2.5 segundos)
                     disableOnInteraction: false, // Continua autoplay mesmo após interação do usuário
-                    reverseDirection: true // Faz o slide rolar para a esquerda
                 },
                 pagination: {
                     el: '.swiper-pagination',
