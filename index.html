@@ -122,6 +122,42 @@
         }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* --- Melhorias na Janela Saiba Mais --- */
+        .subpage-header { 
+            border-left: 3px solid var(--gold); 
+            padding-left: 20px; 
+            margin-bottom: 30px; 
+        }
+        .subpage-header span { 
+            color: var(--gold); 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            display: block; 
+            margin-bottom: 10px; 
+        }
+        .subpage-header h2 { 
+            font-size: 2.5rem; 
+            line-height: 1.2; 
+            color: var(--white); 
+        }
+        .subpage-dynamic-text { 
+            color: var(--text-gray); 
+            line-height: 1.8; 
+            font-size: 1.1rem; 
+        }
+        .subpage-dynamic-text strong { 
+            color: var(--gold); 
+        }
+        .subpage-cta {
+            background: rgba(197, 160, 89, 0.05);
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px dashed rgba(197, 160, 89, 0.3);
+            text-align: center;
+            border-radius: 4px;
+        }
+
         /* --- Equipe --- */
         .equipe-grid { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; margin-top: 50px; }
         .membro-card { width: 300px; text-align: center; }
@@ -523,22 +559,30 @@
         AOS.init({ duration: 1000, once: true });
 
         const conteudos = {
-            'rescisao': { titulo: 'Rescisão Indireta', texto: 'A falta grave da empresa permite o encerramento do contrato com todos os direitos de uma demissão sem justa causa.' },
-            'periculosidade': { titulo: 'Periculosidade', texto: 'Adicional de 30% garantido para quem trabalha sob risco acentuado de vida.' },
-            'insalubridade': { titulo: 'Insalubridade', texto: 'Adicional devido à exposição a agentes nocivos à saúde acima dos limites legais.' },
-            'horas': { titulo: 'Horas Extras', texto: 'Pagamento das horas trabalhadas além da jornada normal com os adicionais legais devidos.' },
-            'assedio': { titulo: 'Assédio Moral/Sexual', texto: 'Indenização por abusos e situações vexatórias sofridas no ambiente de trabalho.' },
-            'verbas': { titulo: 'Verbas Rescisórias', texto: 'Garantia do recebimento correto de FGTS, férias, 13º e aviso prévio.' },
-            'justa': { titulo: 'Reversão de Justa Causa', texto: 'Anulação de demissões punitivas aplicadas de forma desproporcional ou injusta.' },
-            'defesa': { titulo: 'Defesa Trabalhista', texto: 'Consultoria técnica para empresas e profissionais em litígios trabalhistas.' }
+            'rescisao': { tag: 'Direito do Trabalho', titulo: 'Rescisão Indireta', texto: 'A falta grave da empresa permite que você saia recebendo <strong>todos os seus direitos</strong>, como se tivesse sido demitido sem justa causa. Isso inclui FGTS com multa de 40%, aviso prévio e seguro-desemprego.' },
+            'periculosidade': { tag: 'Adicionais', titulo: 'Periculosidade', texto: 'Direito a um adicional de <strong>30% sobre o salário base</strong> para quem trabalha em condições de risco acentuado, como eletricidade ou inflamáveis.' },
+            'insalubridade': { tag: 'Saúde Ocupacional', titulo: 'Insalubridade', texto: 'Compensação pela exposição a agentes nocivos. Os graus variam entre <strong>10%, 20% ou 40%</strong> do salário mínimo.' },
+            'horas': { tag: 'Jornada', titulo: 'Horas Extras', texto: 'Qualquer minuto trabalhado além da jornada normal deve ser pago com adicional de, no mínimo, 50%. Analisamos bancos de horas ilegais.' },
+            'assedio': { tag: 'Danos Morais', titulo: 'Assédio Moral e Sexual', texto: 'Proteção contra abusos ou condutas vexatórias. Atuamos com sigilo absoluto para garantir sua <strong>dignidade e indenização</strong>.' },
+            'verbas': { tag: 'Cálculo', titulo: 'Verbas Rescisórias', texto: 'Conferência detalhada de saldo de salário, 13º, férias e multas por atraso no pagamento do acerto.' },
+            'justa': { tag: 'Defesa', titulo: 'Reversão de Justa Causa', texto: 'Se a demissão foi injusta ou sem provas robustas, buscamos a <strong>anulação judicial</strong> para restaurar seus direitos integrais.' },
+            'defesa': { tag: 'Consultivo', titulo: 'Defesa Trabalhista', texto: 'Estratégia jurídica para empresas e profissionais em litígios complexos e auditorias trabalhistas.' }
         };
 
         function openPage(id) {
             const data = conteudos[id];
             document.getElementById('subpage-dynamic-content').innerHTML = `
-                <h2 style="color:var(--gold); margin-bottom:20px;">${data.titulo}</h2>
-                <p style="color:var(--text-gray); line-height:1.8;">${data.texto}</p>
-                <a href="https://wa.me/5583986217739" target="_blank" class="btn-gold" style="margin-top:30px; display:inline-block;">Consultar via WhatsApp</a>
+                <div class="subpage-header">
+                    <span>${data.tag}</span>
+                    <h2>${data.titulo}</h2>
+                </div>
+                <div class="subpage-dynamic-text">
+                    <p>${data.texto}</p>
+                </div>
+                <div class="subpage-cta">
+                    <p style="margin-bottom:15px; color:var(--white);">Precisa de uma análise específica para o seu caso?</p>
+                    <a href="https://wa.me/5583986217739" target="_blank" class="btn-gold">Iniciar Consultoria pelo WhatsApp</a>
+                </div>
             `;
             document.getElementById('subpage-overlay').style.display = 'block';
             document.body.style.overflow = 'hidden';
