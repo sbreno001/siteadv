@@ -37,7 +37,9 @@
             z-index: 1000;
             background: rgba(18, 18, 18, 0.95);
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            gap: 20px; /* Adicionado para evitar que o botão encoste na logo */
         }
+        .logo { display: flex; align-items: center; min-width: 0; }
         .logo img { max-height: 45px; width: auto; object-fit: contain; }
         nav { display: none; }
 
@@ -149,7 +151,7 @@
         }
 
         .footer-logo {
-            max-height: 100px; /* Aumentado para dar ênfase à nova logo */
+            max-height: 100px;
             width: auto;
             margin-bottom: 20px;
             object-fit: contain;
@@ -210,11 +212,10 @@
         }
 
         @media (max-width: 768px) {
-            header { padding: 1rem 5%; }
-            .logo img { max-height: 40px; }
+            header { padding: 1rem 5%; gap: 15px; }
+            .logo img { max-height: 40px; max-width: 120px; }
             .grid-atuacao { grid-template-columns: 1fr; }
             
-            /* Melhorias Mobile para o Footer */
             .footer-container {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -226,11 +227,12 @@
                 align-items: center;
             }
             .contact-info p { justify-content: center; }
-            .footer-logo { max-height: 120px; } /* Logo maior em telas pequenas */
+            .footer-logo { max-height: 120px; }
             .bottom-container { flex-direction: column; gap: 15px; }
+            header .btn-gold { padding: 0.5rem 0.8rem !important; font-size: 0.65rem !important; white-space: nowrap; }
         }
 
-        /* --- Estilo das Avaliações --- */
+        /* Estilo das Avaliações */
         .grid-reviews {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -254,7 +256,7 @@
         }
 
         .stars {
-            color: #ffb400; /* Cor ouro do Google */
+            color: #ffb400;
             margin-bottom: 20px;
             font-size: 0.9rem;
         }
@@ -297,7 +299,6 @@
             gap: 5px;
         }
 
-        /* Responsividade */
         @media (max-width: 992px) {
             .grid-reviews { grid-template-columns: repeat(2, 1fr); }
         }
@@ -326,7 +327,7 @@
     </header>
 
     <div id="subpage-overlay" onclick="closeOutside(event)">
-        <div class="btn-close-x" onclick="closePage()">&times;</div>
+        <div class="btn-close-x" onclick="closePage()">×</div>
         <div class="subpage-box" id="subpage-box">
             <div id="subpage-dynamic-content"></div>
         </div>
@@ -417,50 +418,46 @@
     </section>
 
     <section id="avaliacoes" style="background: var(--bg-dark);">
-    <span class="section-tag">DEPOIMENTOS</span>
-    <h2 class="section-title">O que nossos clientes dizem</h2>
-    
-    <div class="grid-reviews">
-        <div class="card-review" data-aos="fade-up">
-            <div class="stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <span class="section-tag">DEPOIMENTOS</span>
+        <h2 class="section-title">O que nossos clientes dizem</h2>
+        <div class="grid-reviews">
+            <div class="card-review" data-aos="fade-up">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p>"Excelente profissional. Resolveu meu caso de rescisão indireta com muita agilidade e transparência. Recomendo muito o Dr. Rubens."</p>
+                <div class="client-info">
+                    <img src="https://ui-avatars.com/api/?name=João+Silva&background=c5a059&color=fff" alt="Cliente">
+                    <span>João Silva</span>
+                </div>
+                <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
             </div>
-            <p>"Excelente profissional. Resolveu meu caso de rescisão indireta com muita agilidade e transparência. Recomendo muito o Dr. Rubens."</p>
-            <div class="client-info">
-                <img src="https://ui-avatars.com/api/?name=João+Silva&background=c5a059&color=fff" alt="Cliente">
-                <span>João Silva</span>
+            <div class="card-review" data-aos="fade-up" data-aos-delay="100">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p>"Tive todo o suporte necessário no meu processo de horas extras. A inteligência jurídica da equipe fez toda a diferença no resultado."</p>
+                <div class="client-info">
+                    <img src="https://ui-avatars.com/api/?name=Maria+Oliveira&background=c5a059&color=fff" alt="Cliente">
+                    <span>Maria Oliveira</span>
+                </div>
+                <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
             </div>
-            <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
+            <div class="card-review" data-aos="fade-up" data-aos-delay="200">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p>"Atendimento impecável. O Dr. Rubens é muito atencioso e domina completamente a área trabalhista. Nota 10!"</p>
+                <div class="client-info">
+                    <img src="https://ui-avatars.com/api/?name=Ricardo+Souza&background=c5a059&color=fff" alt="Cliente">
+                    <span>Ricardo Souza</span>
+                </div>
+                <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
+            </div>
         </div>
-
-        <div class="card-review" data-aos="fade-up" data-aos-delay="100">
-            <div class="stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p>"Tive todo o suporte necessário no meu processo de horas extras. A inteligência jurídica da equipe fez toda a diferença no resultado."</p>
-            <div class="client-info">
-                <img src="https://ui-avatars.com/api/?name=Maria+Oliveira&background=c5a059&color=fff" alt="Cliente">
-                <span>Maria Oliveira</span>
-            </div>
-            <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="#" target="_blank" class="btn-link">Ver todas as avaliações no Google</a>
         </div>
-
-        <div class="card-review" data-aos="fade-up" data-aos-delay="200">
-            <div class="stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p>"Atendimento impecável. O Dr. Rubens é muito atencioso e domina completamente a área trabalhista. Nota 10!"</p>
-            <div class="client-info">
-                <img src="https://ui-avatars.com/api/?name=Ricardo+Souza&background=c5a059&color=fff" alt="Cliente">
-                <span>Ricardo Souza</span>
-            </div>
-            <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
-        </div>
-    </div>
-
-    <div style="text-align: center; margin-top: 40px;">
-        <a href="https://www.google.com/maps" target="_blank" class="btn-link">Ver todas as avaliações no Google</a>
-    </div>
     </section>
 
     <section style="background: var(--bg-accent);">
@@ -483,7 +480,6 @@
                 <img src="imagens/logosite.png" alt="Logo Rubens Sousa" class="footer-logo">
                 <p class="slogan">Compromisso com a sua segurança jurídica.</p>
             </div>
-
             <div class="footer-col">
                 <h4>Institucional</h4>
                 <ul>
@@ -493,7 +489,6 @@
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h4>Serviços</h4>
                 <ul>
@@ -503,7 +498,6 @@
                     <li><a href="javascript:void(0)" onclick="openPage('verbas')">Verbas</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h4>Contato</h4>
                 <div class="contact-info">
@@ -514,10 +508,9 @@
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <div class="bottom-container">
-                <p>&copy; 2026 Rubens Sousa - Todos os Direitos Reservados.</p>
+                <p>© 2026 Rubens Sousa - Todos os Direitos Reservados.</p>
                 <div class="bottom-links">
                     <a href="#">Privacidade</a>
                 </div>
