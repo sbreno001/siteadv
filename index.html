@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rubens Sousa</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="imagens/site.ico" type="image/x-icon">
+
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-accent: #1a1a1a;
+            --gold: #c5a059; /* Tom champanhe da imagem */
+            --white: #ffffff;
+            --text-gray: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { overflow-x: hidden; width: 100%; background-color: var(--bg-dark); color: var(--white); font-family: 'Inter', sans-serif; }
+        
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; }
+
+        /* --- Navigation --- */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+        .logo img { max-height: 45px; width: auto; object-fit: contain; }
+        nav { display: none; }
+
+        /* --- Hero --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 5% 0; 
+            background: linear-gradient(to right, var(--bg-dark) 40%, transparent), 
+                        url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1200') no-repeat right center/cover;
+        }
+        .hero-content { max-width: 600px; }
+        .hero-content span { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; }
+        .hero-content h1 { font-size: 3rem; margin: 1rem 0; line-height: 1.1; }
+        .btn-gold { 
+            background: var(--gold); color: #000; padding: 1rem 2rem; 
+            font-weight: 700; display: inline-block; transition: 0.3s; 
+            margin-top: 1.5rem; text-transform: uppercase; font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        /* --- Section Styling --- */
+        section { padding: 80px 5%; }
+        .section-tag { color: var(--gold); text-align: center; display: block; margin-bottom: 1rem; letter-spacing: 2px; font-size: 0.8rem; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; }
+
+        /* --- Areas de Atuação --- */
+        .grid-atuacao {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .card-img {
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            border-radius: 4px;
+        }
+        .card-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: 0.5s; opacity: 0.6; }
+        .card-img:hover img { transform: scale(1.1); opacity: 0.4; }
+        
+        .card-content { position: relative; z-index: 2; width: 100%; }
+        .card-content h3 { font-size: 1.5rem; margin-bottom: 10px; cursor: pointer; transition: 0.3s; display: inline-block; }
+        .card-content h3:hover { color: var(--gold); }
+        .btn-link { color: var(--gold); font-size: 0.8rem; font-weight: 700; border-bottom: 1px solid var(--gold); padding-bottom: 5px; cursor: pointer; display: inline-block; }
+
+        /* --- SISTEMA DE SUBPÁGINAS --- */
+        #subpage-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            display: none;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+        }
+        .btn-close-x {
+            position: fixed;
+            top: 30px; right: 40px;
+            font-size: 2.5rem;
+            color: var(--gold);
+            cursor: pointer;
+            z-index: 2100;
+            transition: 0.3s;
+        }
+        .btn-close-x:hover { transform: rotate(90deg); color: #fff; }
+
+        .subpage-box {
+            max-width: 800px;
+            margin: 60px auto;
+            background: var(--bg-accent);
+            padding: 50px;
+            border-radius: 4px;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            animation: slideUp 0.4s ease;
+        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Equipe --- */
+        .equipe-grid { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; margin-top: 50px; }
+        .membro-card { width: 300px; text-align: center; }
+        .membro-card img { width: 100%; height: 380px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.3); margin-bottom: 1.5rem; }
+        .membro-card h4 { font-size: 1.4rem; color: var(--gold); }
+        .membro-card p { font-size: 0.9rem; color: var(--text-gray); margin-top: 5px; }
+
+        /* --- FAQ --- */
+        .faq-item { background: var(--bg-accent); padding: 20px; margin-bottom: 10px; border-radius: 4px; }
+        .faq-item h4 { color: var(--gold); margin-bottom: 10px; }
+        .faq-item p { font-size: 0.9rem; color: var(--text-gray); }
+
+        /* --- RODAPÉ REESTRUTURADO --- */
+        .main-footer {
+            background-color: #0a0a0a;
+            padding: 80px 5% 0;
+            border-top: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 40px;
+            padding-bottom: 60px;
+        }
+
+        .footer-logo {
+            max-height: 100px; /* Aumentado para dar ênfase à nova logo */
+            width: auto;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+
+        .footer-col h4 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-gray); font-size: 0.9rem; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--gold); padding-left: 5px; }
+
+        .slogan {
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-style: italic;
+            max-width: 250px;
+            line-height: 1.5;
+        }
+
+        .contact-info p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-info i { color: var(--gold); width: 18px; text-align: center; }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 25px 0; }
+        .bottom-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(160, 160, 160, 0.5);
+            font-size: 0.75rem;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (min-width: 992px) {
+            nav { display: block; }
+            nav ul { display: flex; list-style: none; gap: 30px; }
+            nav a { font-size: 0.8rem; letter-spacing: 1px; }
+            .hero-content h1 { font-size: 4.5rem; }
+        }
+
+        @media (max-width: 1100px) {
+            .grid-atuacao { grid-template-columns: repeat(2, 1fr); }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 1rem 5%; }
+            .logo img { max-height: 40px; }
+            .grid-atuacao { grid-template-columns: 1fr; }
+            
+            /* Melhorias Mobile para o Footer */
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 50px;
+            }
+            .footer-col {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-info p { justify-content: center; }
+            .footer-logo { max-height: 120px; } /* Logo maior em telas pequenas */
+            .bottom-container { flex-direction: column; gap: 15px; }
+        }
+
+        /* --- Estilo das Avaliações --- */
+        .grid-reviews {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card-review {
+            background: var(--bg-accent);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .card-review:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: #ffb400; /* Cor ouro do Google */
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .card-review p {
+            color: var(--text-gray);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-info img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .client-info span {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        .google-verify {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .grid-reviews { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .grid-reviews { grid-template-columns: 1fr; }
+            .card-review { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="imagens/logo.png" alt="Logo Rubens Sousa">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#sobre">SOBRE NÓS</a></li>
+                <li><a href="#atuacao">SOLUÇÕES</a></li>
+                <li><a href="#equipe">PROFISSIONAIS</a></li>
+                <li><a href="#contato">CONTATO</a></li>
+            </ul>
+        </nav>
+        <a href="https://wa.me/5583986217739" target="_blank" class="btn-gold" style="margin-top: 0; padding: 0.6rem 1.2rem;">Falar com Dr. Rubens</a>
+    </header>
+
+    <div id="subpage-overlay" onclick="closeOutside(event)">
+        <div class="btn-close-x" onclick="closePage()">&times;</div>
+        <div class="subpage-box" id="subpage-box">
+            <div id="subpage-dynamic-content"></div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-right">
+            <span>Advogado</span>
+            <h1>Especialista em Causas Complexas Trabalhistas</h1>
+            <p>Independente do seu problema, nós temos a expertise para defendê-lo com inteligência e vigor.</p>
+            <a href="#atuacao" class="btn-gold">Conheça nossas Soluções</a>
+        </div>
+    </section>
+
+    <section id="atuacao" style="background: var(--bg-accent);">
+        <span class="section-tag">NOSSAS ÁREAS</span>
+        <h2 class="section-title">Soluções Jurídicas Sob Medida</h2>
+        <div class="grid-atuacao">
+            <div class="card-img" data-aos="fade-up">
+                <img src="imagens/rescisãoindireta.png" alt="Rescisão Indireta">
+                <div class="card-content">
+                    <h3 onclick="openPage('rescisao')">Rescisão Indireta</h3><br>
+                    <span class="btn-link" onclick="openPage('rescisao')">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+            <div class="card-img" data-aos="fade-up">
+                <img src="imagens/periculosidade.png" alt="Adicional de Periculosidade">
+                <div class="card-content">
+                    <h3 onclick="openPage('periculosidade')">Adicional de Periculosidade</h3><br>
+                    <span class="btn-link" onclick="openPage('periculosidade')">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+            <div class="card-img" data-aos="fade-up">
+                <img src="imagens/insalubridade.png" alt="Adicional de Insalubridade">
+                <div class="card-content">
+                    <h3 onclick="openPage('insalubridade')">Adicional de Insalubridade</h3><br>
+                    <span class="btn-link" onclick="openPage('insalubridade')">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+            <div class="card-img" data-aos="fade-up">
+                <img src="imagens/horaextra.png" alt="Horas Extras">
+                <div class="card-content">
+                    <h3 onclick="openPage('horas')">Horas Extras</h3><br>
+                    <span class="btn-link" onclick="openPage('horas')">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+            <div class="card-img" data-aos="fade-up">
+                <img src="imagens/assediomoral.png" alt="Assédio">
+                <div class="card-content">
+                    <h3 onclick="openPage('assedio')">Assédio Moral e Sexual</h3><br>
+                    <span class="btn-link" onclick="openPage('assedio')">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+            <div class="card-img" data-aos="fade-up">
+                <img src="imagens/verbasrescisorias.png" alt="Verbas">
+                <div class="card-content">
+                    <h3 onclick="openPage('verbas')">Verbas Rescisórias</h3><br>
+                    <span class="btn-link" onclick="openPage('verbas')">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+            <div class="card-img" data-aos="fade-up">
+                <img src="imagens/justacausa.png" alt="Justa Causa">
+                <div class="card-content">
+                    <h3 onclick="openPage('justa')">Reversão da Justa Causa</h3><br>
+                    <span class="btn-link" onclick="openPage('justa')">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+            <div class="card-img" data-aos="fade-up">
+                <img src="imagens/defesatrabalhista.png" alt="Defesa">
+                <div class="card-content">
+                    <h3 onclick="openPage('defesa')">Defesa Trabalhista</h3><br>
+                    <span class="btn-link" onclick="openPage('defesa')">Ver detalhes <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipe">
+        <span class="section-tag">EQUIPE ESTRATÉGICA</span>
+        <h2 class="section-title">Profissional Dedicado</h2>
+        <div class="equipe-grid">
+            <div class="membro-card" data-aos="zoom-in">
+                <img src="imagens/rubens.png">
+                <h4>Dr. Rubens Sousa</h4>
+                <p>Especialista em Advocacia Trabalhista</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="avaliacoes" style="background: var(--bg-dark);">
+    <span class="section-tag">DEPOIMENTOS</span>
+    <h2 class="section-title">O que nossos clientes dizem</h2>
+    
+    <div class="grid-reviews">
+        <div class="card-review" data-aos="fade-up">
+            <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"Excelente profissional. Resolveu meu caso de rescisão indireta com muita agilidade e transparência. Recomendo muito o Dr. Rubens."</p>
+            <div class="client-info">
+                <img src="https://ui-avatars.com/api/?name=João+Silva&background=c5a059&color=fff" alt="Cliente">
+                <span>João Silva</span>
+            </div>
+            <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
+        </div>
+
+        <div class="card-review" data-aos="fade-up" data-aos-delay="100">
+            <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"Tive todo o suporte necessário no meu processo de horas extras. A inteligência jurídica da equipe fez toda a diferença no resultado."</p>
+            <div class="client-info">
+                <img src="https://ui-avatars.com/api/?name=Maria+Oliveira&background=c5a059&color=fff" alt="Cliente">
+                <span>Maria Oliveira</span>
+            </div>
+            <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
+        </div>
+
+        <div class="card-review" data-aos="fade-up" data-aos-delay="200">
+            <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"Atendimento impecável. O Dr. Rubens é muito atencioso e domina completamente a área trabalhista. Nota 10!"</p>
+            <div class="client-info">
+                <img src="https://ui-avatars.com/api/?name=Ricardo+Souza&background=c5a059&color=fff" alt="Cliente">
+                <span>Ricardo Souza</span>
+            </div>
+            <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="https://www.google.com/maps" target="_blank" class="btn-link">Ver todas as avaliações no Google</a>
+    </div>
+    </section>
+
+    <section style="background: var(--bg-accent);">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item" data-aos="fade-up">
+                <h4>Como funciona a primeira consulta?</h4>
+                <p>Realizamos uma análise preliminar do caso para identificar viabilidades jurídicas antes de formalizar a contratação.</p>
+            </div>
+            <div class="faq-item" data-aos="fade-up">
+                <h4>Atendem em todo o Brasil?</h4>
+                <p>Sim, possuímos infraestrutura digital para atender clientes e processos em todas as federações brasileiras.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato" class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="imagens/logosite.png" alt="Logo Rubens Sousa" class="footer-logo">
+                <p class="slogan">Compromisso com a sua segurança jurídica.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Institucional</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#atuacao">Áreas de Atuação</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="openPage('rescisao')">Rescisão Indireta</a></li>
+                    <li><a href="javascript:void(0)" onclick="openPage('periculosidade')">Periculosidade</a></li>
+                    <li><a href="javascript:void(0)" onclick="openPage('assedio')">Assédio Moral</a></li>
+                    <li><a href="javascript:void(0)" onclick="openPage('verbas')">Verbas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone-alt"></i> <a href="https://wa.me/5583986217739" target="_blank">(83) 98621-7739</a></p>
+                    <p><i class="fab fa-instagram"></i> <a href="#" target="_blank">@rubenssousa.adv</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:rubenssousa.adv@hotmail.com">rubenssousa.adv@hotmail.com</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> João Pessoa - PB</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="bottom-container">
+                <p>&copy; 2026 Rubens Sousa - Todos os Direitos Reservados.</p>
+                <div class="bottom-links">
+                    <a href="#">Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        const conteudos = {
+            'rescisao': { titulo: 'Rescisão Indireta', texto: 'A falta grave da empresa permite o encerramento do contrato com todos os direitos de uma demissão sem justa causa.' },
+            'periculosidade': { titulo: 'Periculosidade', texto: 'Adicional de 30% garantido para quem trabalha sob risco acentuado de vida.' },
+            'insalubridade': { titulo: 'Insalubridade', texto: 'Adicional devido à exposição a agentes nocivos à saúde acima dos limites legais.' },
+            'horas': { titulo: 'Horas Extras', texto: 'Pagamento das horas trabalhadas além da jornada normal com os adicionais legais devidos.' },
+            'assedio': { titulo: 'Assédio Moral/Sexual', texto: 'Indenização por abusos e situações vexatórias sofridas no ambiente de trabalho.' },
+            'verbas': { titulo: 'Verbas Rescisórias', texto: 'Garantia do recebimento correto de FGTS, férias, 13º e aviso prévio.' },
+            'justa': { titulo: 'Reversão de Justa Causa', texto: 'Anulação de demissões punitivas aplicadas de forma desproporcional ou injusta.' },
+            'defesa': { titulo: 'Defesa Trabalhista', texto: 'Consultoria técnica para empresas e profissionais em litígios trabalhistas.' }
+        };
+
+        function openPage(id) {
+            const data = conteudos[id];
+            document.getElementById('subpage-dynamic-content').innerHTML = `
+                <h2 style="color:var(--gold); margin-bottom:20px;">${data.titulo}</h2>
+                <p style="color:var(--text-gray); line-height:1.8;">${data.texto}</p>
+                <a href="https://wa.me/5583986217739" target="_blank" class="btn-gold" style="margin-top:30px; display:inline-block;">Consultar via WhatsApp</a>
+            `;
+            document.getElementById('subpage-overlay').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePage() {
+            document.getElementById('subpage-overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeOutside(e) {
+            if (e.target.id === 'subpage-overlay') closePage();
+        }
+
+        window.onkeydown = (e) => { if (e.key === "Escape") closePage(); };
+    </script>
+</body>
+</html>
