@@ -6,49 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rubens Sousa</title>
 
+    <!-- Google Fonts: Importa as fontes 'Playfair Display' e 'Inter' para o projeto -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- AOS Animate on Scroll Library: Usado para animações de elementos ao rolar a página -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome: Biblioteca de ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"> <!-- Adicionado -->
+    <!-- Swiper.js CSS: Estilos para o carrossel de avaliações -->
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Favicon: Ícone exibido na aba do navegador -->
     <link rel="shortcut icon" href="imagens/site.ico" type="image/x-icon">
 
     <style>
+        /* --- Variáveis CSS --- */
+        /* Define um conjunto de cores e tamanhos de fonte globais para facilitar a manutenção */
         :root {
-            --bg-dark: #121212;
-            --bg-accent: #1a1a1a;
-            --gold: #c5a059;
-            /* Tom champanhe da imagem */
-            --white: #ffffff;
-            --text-gray: #a0a0a0;
+            --bg-dark: #121212; /* Cor de fundo principal escura */
+            --bg-accent: #1a1a1a; /* Cor de fundo secundária para seções e cards */
+            --gold: #c5a059; /* Tom champanhe/dourado para elementos de destaque */
+            --white: #ffffff; /* Cor branca para textos */
+            --text-gray: #a0a0a0; /* Cor cinza para textos secundários */
         }
 
+        /* --- Reset Básico e Estilos Globais --- */
+        /* Zera margens e paddings e define box-sizing globalmente */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Define estilos de fonte e cor de fundo padrão para todo o corpo do documento */
         html,
         body {
-            overflow-x: hidden;
+            overflow-x: hidden; /* Evita rolagem horizontal indesejada */
             width: 100%;
             background-color: var(--bg-dark);
             color: var(--white);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif; /* Fonte padrão para o corpo */
         }
 
+        /* Estilos específicos para títulos h1, h2, h3 */
         h1,
         h2,
         h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', serif; /* Fonte diferenciada para títulos */
         }
 
+        /* Remove sublinhado de links e herda a cor do texto pai */
         a {
             text-decoration: none;
             color: inherit;
         }
 
-        /* --- Navigation --- */
+        /* --- Estilos do Cabeçalho (Header) --- */
+        /* Contém a navegação e a logo, fixado no topo */
         header {
             padding: 1.5rem 5%;
             display: flex;
@@ -57,17 +69,17 @@
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000;
-            background: rgba(18, 18, 18, 0.95);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
-            gap: 20px;
-            /* Adicionado para evitar que o botão encoste na logo */
+            z-index: 1000; /* Garante que o cabeçalho esteja acima de outros elementos */
+            background: rgba(18, 18, 18, 0.95); /* Fundo semi-transparente */
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2); /* Borda inferior sutil */
+            gap: 20px; /* Espaçamento entre os itens do cabeçalho */
         }
 
+        /* Estilos da logo no cabeçalho */
         .logo {
             display: flex;
             align-items: center;
-            min-width: 0;
+            min-width: 0; /* Evita que a logo force o layout em telas pequenas */
         }
 
         .logo img {
@@ -76,20 +88,24 @@
             object-fit: contain;
         }
 
+        /* Navegação principal, oculta por padrão em mobile */
         nav {
             display: none;
         }
 
-        /* --- Hero --- */
+        /* --- Seção Hero (Destaque Inicial) --- */
+        /* Seção de introdução com título, descrição e imagem de fundo */
         .hero {
-            height: 100vh;
+            height: 100vh; /* Ocupa a altura total da viewport */
             display: flex;
             align-items: center;
             padding: 100px 5% 0;
+            /* Gradiente e imagem de fundo para a seção hero */
             background: linear-gradient(to right, var(--bg-dark) 40%, transparent),
                 url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1200') no-repeat right center/cover;
         }
 
+        /* Conteúdo textual da seção hero */
         .hero-content {
             max-width: 600px;
         }
@@ -107,6 +123,7 @@
             line-height: 1.1;
         }
 
+        /* Botão dourado padrão */
         .btn-gold {
             background: var(--gold);
             color: #000;
@@ -120,9 +137,10 @@
             cursor: pointer;
         }
 
-        /* --- Section Styling --- */
+        /* --- Estilos Comuns de Seção --- */
+        /* Estilos gerais aplicados a todas as seções */
         section {
-            padding: 80px 5%;
+            padding: 80px 5%; /* Espaçamento interno para todas as seções */
         }
 
         .section-tag {
@@ -140,13 +158,15 @@
             margin-bottom: 3rem;
         }
 
-        /* --- Areas de Atuação --- */
+        /* --- Seção Áreas de Atuação --- */
+        /* Grid de cartões de atuação */
         .grid-atuacao {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
+        /* Estilos para os cartões de imagem das áreas de atuação */
         .card-img {
             height: 400px;
             position: relative;
@@ -174,6 +194,7 @@
             opacity: 0.4;
         }
 
+        /* Conteúdo dos cartões de imagem */
         .card-content {
             position: relative;
             z-index: 2;
@@ -192,6 +213,7 @@
             color: var(--gold);
         }
 
+        /* Estilo para links de "Ver detalhes" */
         .btn-link {
             color: var(--gold);
             font-size: 0.8rem;
@@ -209,20 +231,22 @@
             transform: translateY(-3px);
         }
 
-        /* --- SISTEMA DE SUBPÁGINAS --- */
+        /* --- SISTEMA DE SUBPÁGINAS (Overlay de Detalhes) --- */
+        /* Overlay que cobre a tela quando uma subpágina é aberta */
         #subpage-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
-            display: none;
-            overflow-y: auto;
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.95); /* Fundo escuro semi-transparente */
+            z-index: 2000; /* Garante que fique acima de tudo */
+            display: none; /* Escondido por padrão */
+            overflow-y: auto; /* Permite rolagem se o conteúdo for grande */
+            backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
         }
 
+        /* Botão de fechar (X) para a subpágina */
         .btn-close-x {
             position: fixed;
             top: 30px;
@@ -239,16 +263,18 @@
             color: #fff;
         }
 
+        /* Container principal da subpágina */
         .subpage-box {
             max-width: 800px;
-            margin: 60px auto;
+            margin: 60px auto; /* Centraliza o box */
             background: var(--bg-accent);
             padding: 50px;
             border-radius: 4px;
             border: 1px solid rgba(197, 160, 89, 0.2);
-            animation: slideUp 0.4s ease;
+            animation: slideUp 0.4s ease; /* Animação de entrada */
         }
 
+        /* Animação para o subpage-box */
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -261,7 +287,8 @@
             }
         }
 
-        /* --- Melhorias na Janela Saiba Mais --- */
+        /* --- Melhorias na Janela "Saiba Mais" (Subpágina) --- */
+        /* Estilos do cabeçalho da subpágina */
         .subpage-header {
             border-left: 3px solid var(--gold);
             padding-left: 20px;
@@ -283,6 +310,7 @@
             color: var(--white);
         }
 
+        /* Estilo para o texto dinâmico das subpáginas */
         .subpage-dynamic-text {
             color: var(--text-gray);
             line-height: 1.8;
@@ -293,6 +321,7 @@
             color: var(--gold);
         }
 
+        /* Chamada para ação dentro da subpágina */
         .subpage-cta {
             background: rgba(197, 160, 89, 0.05);
             padding: 30px;
@@ -302,7 +331,8 @@
             border-radius: 4px;
         }
 
-        /* --- Equipe --- */
+        /* --- Seção Equipe --- */
+        /* Grid de membros da equipe */
         .equipe-grid {
             display: flex;
             flex-wrap: wrap;
@@ -311,6 +341,7 @@
             margin-top: 50px;
         }
 
+        /* Cartão individual de membro da equipe */
         .membro-card {
             width: 300px;
             text-align: center;
@@ -336,7 +367,8 @@
             margin-top: 5px;
         }
 
-        /* --- FAQ --- */
+        /* --- Seção FAQ (Perguntas Frequentes) --- */
+        /* Item individual de FAQ */
         .faq-item {
             background: var(--bg-accent);
             padding: 20px;
@@ -354,7 +386,8 @@
             color: var(--text-gray);
         }
 
-        /* --- RODAPÉ REESTRUTURADO --- */
+        /* --- RODAPÉ (Footer) --- */
+        /* Container principal do rodapé */
         .main-footer {
             background-color: #0a0a0a;
             padding: 80px 5% 0;
@@ -377,6 +410,7 @@
             object-fit: contain;
         }
 
+        /* Colunas de conteúdo do rodapé */
         .footer-col h4 {
             color: var(--gold);
             font-size: 1.1rem;
@@ -411,6 +445,7 @@
             line-height: 1.5;
         }
 
+        /* Informações de contato no rodapé */
         .contact-info p {
             color: var(--text-gray);
             font-size: 0.9rem;
@@ -441,6 +476,7 @@
             transform: scale(1.1); /* Aumentar ligeiramente o ícone */
         }
 
+        /* Seção inferior do rodapé (copyright, links adicionais) */
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             padding: 25px 0;
@@ -568,7 +604,8 @@
             }
         }
 
-        /* Estilo das Avaliações */
+        /* --- Estilo das Avaliações (Reviews) --- */
+        /* Grid para exibir os cartões de avaliação */
         .grid-reviews {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -577,6 +614,7 @@
             margin: 0 auto;
         }
 
+        /* Estilos para cada cartão de avaliação individual */
         .card-review {
             background: var(--bg-accent);
             padding: 40px;
@@ -584,6 +622,10 @@
             border: 1px solid rgba(197, 160, 89, 0.1);
             position: relative;
             transition: 0.3s;
+            display: flex; /* Habilita flexbox para organização interna */
+            flex-direction: column; /* Organiza os itens em coluna */
+            justify-content: space-between; /* Distribui o espaço verticalmente */
+            min-height: 280px; /* Garante altura mínima para uniformidade */
         }
 
         .card-review:hover {
@@ -591,20 +633,29 @@
             transform: translateY(-5px);
         }
 
+        /* Estrelas de classificação das avaliações */
         .stars {
-            color: #ffb400;
+            color: #ffb400; /* Cor amarela para as estrelas */
             margin-bottom: 20px;
             font-size: 0.9rem;
         }
 
+        /* Parágrafo de texto da avaliação */
         .card-review p {
             color: var(--text-gray);
             font-style: italic;
             line-height: 1.6;
             margin-bottom: 25px;
             font-size: 0.95rem;
+            flex-grow: 1; /* Permite que o parágrafo ocupe o espaço disponível */
+            overflow: hidden; /* Esconde o texto que excede a altura */
+            display: -webkit-box;
+            -webkit-line-clamp: 5; /* Limita o texto a 5 linhas */
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis; /* Adiciona reticências ao texto truncado */
         }
 
+        /* Informações do cliente (nome e imagem) */
         .client-info {
             display: flex;
             align-items: center;
@@ -614,7 +665,7 @@
         .client-info img {
             width: 45px;
             height: 45px;
-            border-radius: 50%;
+            border-radius: 50%; /* Imagem redonda */
             object-fit: cover;
         }
 
@@ -624,22 +675,27 @@
             font-size: 0.9rem;
         }
 
+        /* Selo de verificação do Google */
         .google-verify {
-            position: static; /* Remove o posicionamento absoluto */
+            position: static; /* Remove posicionamento absoluto para melhor fluxo */
             margin-top: 5px; /* Ajusta a margem superior */
             justify-content: flex-start; /* Alinha o conteúdo à esquerda */
             color: var(--text-gray); /* Torna a cor mais visível */
-            order: 4; /* Avaliação do Google vem por último */
-            font-size: 0.6rem; /* Reduz um pouco o tamanho da fonte */
-            white-space: nowrap; /* Evita que o texto quebre em várias linhas desnecessariamente */
+            order: 4; /* Define a ordem de exibição, vindo por último */
+            font-size: 0.6rem; /* Reduz o tamanho da fonte */
+            white-space: nowrap; /* Evita que o texto quebre em várias linhas */
         }
 
+        /* Media queries para a seção de avaliações */
+
+        /* Tablet (até 992px) */
         @media (max-width: 992px) {
             .grid-reviews {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
+        /* Mobile (até 768px) */
         @media (max-width: 768px) {
             .grid-reviews {
                 grid-template-columns: 1fr;
@@ -770,6 +826,7 @@
         <span class="section-tag">DEPOIMENTOS</span>
         <h2 class="section-title">O que nossos clientes dizem</h2>
 
+        <!-- Controles de ordenação das avaliações -->
         <div class="reviews-controls" style="text-align: center; margin-bottom: 30px;">
             <label for="sort-reviews" style="color: var(--gold); margin-right: 10px;">Ordenar por:</label>
             <select id="sort-reviews" style="background: var(--bg-accent); color: var(--white); border: 1px solid var(--gold); padding: 8px 12px; border-radius: 4px;">
@@ -780,17 +837,17 @@
             </select>
         </div>
 
-        <!-- Slider main container -->
+        <!-- Slider de Avaliações (Swiper.js) -->
         <div class="swiper-container mySwiper" style="padding: 0 50px;">
-            <!-- Additional required wrapper -->
+            <!-- Wrapper para os slides das avaliações -->
             <div class="swiper-wrapper" id="reviews-wrapper">
-                <!-- Avaliações serão carregadas aqui pelo JavaScript -->
+                <!-- Avaliações serão carregadas dinamicamente aqui pelo JavaScript -->
             </div>
 
-            <!-- If we need pagination -->
+            <!-- Paginação do Swiper (bolinhas de navegação) -->
             <div class="swiper-pagination"></div>
 
-            <!-- If we need navigation buttons -->
+            <!-- Botões de navegação (próximo/anterior) do Swiper -->
             <div class="swiper-button-prev" style="color: var(--gold);"></div>
             <div class="swiper-button-next" style="color: var(--gold);"></div>
         </div>
@@ -871,6 +928,7 @@
         });
 
         // Objeto 'conteudos' armazena os dados para cada subpágina dinâmica
+        // Usado para preencher o overlay "Saiba Mais" com informações específicas sobre as áreas de atuação.
         const conteudos = {
             'rescisao': {
                 tag: 'Direito do Trabalho',
@@ -915,6 +973,7 @@
         };
 
         // Função para abrir a subpágina com conteúdo dinâmico
+        // Preenche o overlay com os dados da área de atuação selecionada e o exibe, desabilitando a rolagem do corpo da página.
         function openPage(id) {
             const data = conteudos[id];
             document.getElementById('subpage-dynamic-content').innerHTML = `
@@ -935,22 +994,26 @@
         }
 
         // Função para fechar a subpágina
+        // Esconde o overlay e restaura a rolagem do corpo da página principal.
         function closePage() {
             document.getElementById('subpage-overlay').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
 
         // Função para fechar a subpágina clicando fora da caixa de conteúdo
+        // Verifica se o clique foi no elemento de overlay e, se sim, fecha a subpágina.
         function closeOutside(e) {
             if (e.target.id === 'subpage-overlay') closePage();
         }
 
-        // Escuta a tecla 'Escape' para fechar a subpágina
+        // Escuta o evento de pressionar tecla globalmente
+        // Fecha a subpágina se a tecla 'Escape' (Esc) for pressionada.
         window.onkeydown = (e) => {
             if (e.key === "Escape") closePage();
         };
 
-        // Array de avaliações dos clientes
+        // Array de objetos contendo os dados das avaliações dos clientes
+        // Cada objeto representa uma avaliação com nome, texto, estrelas, etc.
         const avaliacoesClientes = [
             {
                 nome: 'João Paulo',
@@ -1164,7 +1227,8 @@
             },
         ];
 
-        // Função para renderizar as avaliações
+        // Função para renderizar as avaliações no Swiper
+        // Constrói e insere os cartões de avaliação no wrapper do Swiper e inicializa/atualiza o carrossel.
         function renderReviews(reviews) {
             const reviewsWrapper = document.getElementById('reviews-wrapper');
             reviewsWrapper.innerHTML = ''; // Limpa o conteúdo existente
@@ -1195,42 +1259,58 @@
 
             // Inicializa ou atualiza o Swiper
             if (window.mySwiper) {
-                window.mySwiper.destroy(true, true); // Destroi a instância existente para evitar duplicatas
+                window.mySwiper.destroy(true, true); 
             }
+
             window.mySwiper = new Swiper('.mySwiper', {
-                slidesPerView: 3,
-                spaceBetween: 30,
-                loop: true, // Habilitar loop para autoplay contínuo
+                // slidesPerView: 'auto' ou números quebrados como 3.2 garantem a "preview"
+                slidesPerView: 1.2, 
+                spaceBetween: 20,
+                loop: true, 
+                centeredSlides: true, // Ajuda a não quebrar o layout no mobile
+                loopAdditionalSlides: 3, // Cria "clones" extras para o loop não travar
+                
                 autoplay: {
-                    delay: 2500, // Tempo de espera entre os slides (2.5 segundos)
-                    disableOnInteraction: false, // Continua autoplay mesmo após interação do usuário
+                    delay: 2500,
+                    disableOnInteraction: false,
+                    reverseDirection: false // false = vai para a direita (padrão) | true = vai para esquerda
                 },
+                
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
                 },
+                
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
+                
                 breakpoints: {
+                    // Celular (até 767px)
                     0: {
-                        slidesPerView: 1,
-                        spaceBetween: 10,
+                        slidesPerView: 1.2,
+                        spaceBetween: 15,
+                        centeredSlides: true,
                     },
+                    // Tablet (768px até 991px)
                     768: {
-                        slidesPerView: 2,
+                        slidesPerView: 2.2,
                         spaceBetween: 20,
+                        centeredSlides: true,
                     },
+                    // Desktop (992px para cima)
                     992: {
-                        slidesPerView: 3,
+                        slidesPerView: 3, // Alterado para 3 inteiros para evitar quebras, a preview pode ser feita com CSS se ainda desejar
                         spaceBetween: 30,
+                        centeredSlides: false, // Não centraliza para 3 slides inteiros
                     },
                 },
             });
         }
 
-        // Função auxiliar para parsear "tempo atrás" (muito simplificada para esta demonstração)
+        // Função auxiliar para parsear a string "tempo atrás" em um valor numérico (dias)
+        // Converte descrições de tempo como "4 meses atrás" em um número de dias para facilitar a ordenação.
         function parseTimeAgo(timeAgoString) {
             if (!timeAgoString) return 0; // Valor padrão para avaliações sem tempo
             const parts = timeAgoString.split(' ');
@@ -1245,7 +1325,8 @@
             return 0; // Se não conseguir parsear, considerar 0 dias
         }
 
-        // Função para ordenar as avaliações
+        // Função para ordenar as avaliações com base em diferentes critérios
+        // Aceita um critério (recentes, maior-classificacao, etc.) e reordena o array de avaliações antes de renderizá-las.
         function sortReviews(criteria) {
             let sortedReviews = [...avaliacoesClientes]; // Cria uma cópia para não modificar o original
             switch (criteria) {
@@ -1271,6 +1352,7 @@
         }
 
         // Event listener para o seletor de ordenação
+        // Garante que as avaliações sejam renderizadas e ordenadas ao carregar a página e quando o critério de ordenação é alterado.
         document.addEventListener('DOMContentLoaded', () => {
             const sortSelect = document.getElementById('sort-reviews');
             if (sortSelect) {
@@ -1283,7 +1365,8 @@
             sortReviews('relevantes');
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> <!-- Adicionado -->
+    <!-- Swiper.js JS: Para funcionalidade do carrossel de avaliações -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 
 </html>
