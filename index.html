@@ -198,7 +198,14 @@
             border-bottom: 1px solid var(--gold);
             padding-bottom: 5px;
             cursor: pointer;
+            transition: 0.3s;
             display: inline-block;
+        }
+
+        .btn-link:hover {
+            color: var(--white);
+            border-color: var(--white);
+            transform: translateY(-3px);
         }
 
         /* --- SISTEMA DE SUBPÁGINAS --- */
@@ -929,7 +936,7 @@
                 </div>
                 <div class="subpage-cta">
                     <p style="margin-bottom:15px; color:var(--white);">Precisa de uma análise específica para o seu caso?</p>
-                    <a href="https://wa.me/5583986217739" target="_blank" class="btn-gold">Iniciar Consultoria pelo WhatsApp</a>
+                    <a href="https://wa.me/5583986217739" target="_blank" class="btn-gold">Fale agora com um Advogado Especialista</a>
                 </div>
             `;
             document.getElementById('subpage-overlay').style.display = 'block';
