@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rubens Sousa</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -14,16 +15,37 @@
         :root {
             --bg-dark: #121212;
             --bg-accent: #1a1a1a;
-            --gold: #c5a059; /* Tom champanhe da imagem */
+            --gold: #c5a059;
+            /* Tom champanhe da imagem */
             --white: #ffffff;
             --text-gray: #a0a0a0;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { overflow-x: hidden; width: 100%; background-color: var(--bg-dark); color: var(--white); font-family: 'Inter', sans-serif; }
-        
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        a { text-decoration: none; color: inherit; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            background-color: var(--bg-dark);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
         /* --- Navigation --- */
         header {
@@ -37,35 +59,85 @@
             z-index: 1000;
             background: rgba(18, 18, 18, 0.95);
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
-            gap: 20px; /* Adicionado para evitar que o botão encoste na logo */
+            gap: 20px;
+            /* Adicionado para evitar que o botão encoste na logo */
         }
-        .logo { display: flex; align-items: center; min-width: 0; }
-        .logo img { max-height: 45px; width: auto; object-fit: contain; }
-        nav { display: none; }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .logo img {
+            max-height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        nav {
+            display: none;
+        }
 
         /* --- Hero --- */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
-            padding: 100px 5% 0; 
-            background: linear-gradient(to right, var(--bg-dark) 40%, transparent), 
-                        url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1200') no-repeat right center/cover;
+            padding: 100px 5% 0;
+            background: linear-gradient(to right, var(--bg-dark) 40%, transparent),
+                url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1200') no-repeat right center/cover;
         }
-        .hero-content { max-width: 600px; }
-        .hero-content span { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; }
-        .hero-content h1 { font-size: 3rem; margin: 1rem 0; line-height: 1.1; }
-        .btn-gold { 
-            background: var(--gold); color: #000; padding: 1rem 2rem; 
-            font-weight: 700; display: inline-block; transition: 0.3s; 
-            margin-top: 1.5rem; text-transform: uppercase; font-size: 0.8rem;
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content span {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin: 1rem 0;
+            line-height: 1.1;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+            padding: 1rem 2rem;
+            font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
             cursor: pointer;
         }
 
         /* --- Section Styling --- */
-        section { padding: 80px 5%; }
-        .section-tag { color: var(--gold); text-align: center; display: block; margin-bottom: 1rem; letter-spacing: 2px; font-size: 0.8rem; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; }
+        section {
+            padding: 80px 5%;
+        }
+
+        .section-tag {
+            color: var(--gold);
+            text-align: center;
+            display: block;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
 
         /* --- Areas de Atuação --- */
         .grid-atuacao {
@@ -73,6 +145,7 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
+
         .card-img {
             height: 400px;
             position: relative;
@@ -82,34 +155,81 @@
             padding: 30px;
             border-radius: 4px;
         }
-        .card-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: 0.5s; opacity: 0.6; }
-        .card-img:hover img { transform: scale(1.1); opacity: 0.4; }
-        
-        .card-content { position: relative; z-index: 2; width: 100%; }
-        .card-content h3 { font-size: 1.5rem; margin-bottom: 10px; cursor: pointer; transition: 0.3s; display: inline-block; }
-        .card-content h3:hover { color: var(--gold); }
-        .btn-link { color: var(--gold); font-size: 0.8rem; font-weight: 700; border-bottom: 1px solid var(--gold); padding-bottom: 5px; cursor: pointer; display: inline-block; }
+
+        .card-img img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: 0.5s;
+            opacity: 0.6;
+        }
+
+        .card-img:hover img {
+            transform: scale(1.1);
+            opacity: 0.4;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .card-content h3:hover {
+            color: var(--gold);
+        }
+
+        .btn-link {
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 5px;
+            cursor: pointer;
+            display: inline-block;
+        }
 
         /* --- SISTEMA DE SUBPÁGINAS --- */
         #subpage-overlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             display: none;
             overflow-y: auto;
             backdrop-filter: blur(5px);
         }
+
         .btn-close-x {
             position: fixed;
-            top: 30px; right: 40px;
+            top: 30px;
+            right: 40px;
             font-size: 2.5rem;
             color: var(--gold);
             cursor: pointer;
             z-index: 2100;
             transition: 0.3s;
         }
-        .btn-close-x:hover { transform: rotate(90deg); color: #fff; }
+
+        .btn-close-x:hover {
+            transform: rotate(90deg);
+            color: #fff;
+        }
 
         .subpage-box {
             max-width: 800px;
@@ -120,35 +240,51 @@
             border: 1px solid rgba(197, 160, 89, 0.2);
             animation: slideUp 0.4s ease;
         }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         /* --- Melhorias na Janela Saiba Mais --- */
-        .subpage-header { 
-            border-left: 3px solid var(--gold); 
-            padding-left: 20px; 
-            margin-bottom: 30px; 
+        .subpage-header {
+            border-left: 3px solid var(--gold);
+            padding-left: 20px;
+            margin-bottom: 30px;
         }
-        .subpage-header span { 
-            color: var(--gold); 
-            font-size: 0.75rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            display: block; 
-            margin-bottom: 10px; 
+
+        .subpage-header span {
+            color: var(--gold);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
         }
-        .subpage-header h2 { 
-            font-size: 2.5rem; 
-            line-height: 1.2; 
-            color: var(--white); 
+
+        .subpage-header h2 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            color: var(--white);
         }
-        .subpage-dynamic-text { 
-            color: var(--text-gray); 
-            line-height: 1.8; 
-            font-size: 1.1rem; 
+
+        .subpage-dynamic-text {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
-        .subpage-dynamic-text strong { 
-            color: var(--gold); 
+
+        .subpage-dynamic-text strong {
+            color: var(--gold);
         }
+
         .subpage-cta {
             background: rgba(197, 160, 89, 0.05);
             padding: 30px;
@@ -159,16 +295,56 @@
         }
 
         /* --- Equipe --- */
-        .equipe-grid { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; margin-top: 50px; }
-        .membro-card { width: 300px; text-align: center; }
-        .membro-card img { width: 100%; height: 380px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.3); margin-bottom: 1.5rem; }
-        .membro-card h4 { font-size: 1.4rem; color: var(--gold); }
-        .membro-card p { font-size: 0.9rem; color: var(--text-gray); margin-top: 5px; }
+        .equipe-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .membro-card {
+            width: 300px;
+            text-align: center;
+        }
+
+        .membro-card img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .membro-card h4 {
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+
+        .membro-card p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-top: 5px;
+        }
 
         /* --- FAQ --- */
-        .faq-item { background: var(--bg-accent); padding: 20px; margin-bottom: 10px; border-radius: 4px; }
-        .faq-item h4 { color: var(--gold); margin-bottom: 10px; }
-        .faq-item p { font-size: 0.9rem; color: var(--text-gray); }
+        .faq-item {
+            background: var(--bg-accent);
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .faq-item h4 {
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
 
         /* --- RODAPÉ REESTRUTURADO --- */
         .main-footer {
@@ -200,10 +376,24 @@
             font-weight: 600;
         }
 
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: var(--text-gray); font-size: 0.9rem; transition: 0.3s; }
-        .footer-col ul li a:hover { color: var(--gold); padding-left: 5px; }
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
 
         .slogan {
             color: var(--gold);
@@ -222,8 +412,17 @@
             gap: 12px;
         }
 
-        .contact-info i { color: var(--gold); width: 18px; text-align: center; }
-        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 25px 0; }
+        .contact-info i {
+            color: var(--gold);
+            width: 18px;
+            text-align: center;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px 0;
+        }
+
         .bottom-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -236,36 +435,81 @@
 
         /* --- RESPONSIVIDADE --- */
         @media (min-width: 992px) {
-            nav { display: block; }
-            nav ul { display: flex; list-style: none; gap: 30px; }
-            nav a { font-size: 0.8rem; letter-spacing: 1px; }
-            .hero-content h1 { font-size: 4.5rem; }
+            nav {
+                display: block;
+            }
+
+            nav ul {
+                display: flex;
+                list-style: none;
+                gap: 30px;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+
+            .hero-content h1 {
+                font-size: 4.5rem;
+            }
         }
 
         @media (max-width: 1100px) {
-            .grid-atuacao { grid-template-columns: repeat(2, 1fr); }
-            .footer-container { grid-template-columns: 1fr 1fr; }
+            .grid-atuacao {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            header { padding: 1rem 5%; gap: 15px; }
-            .logo img { max-height: 40px; max-width: 120px; }
-            .grid-atuacao { grid-template-columns: 1fr; }
-            
+            header {
+                padding: 1rem 5%;
+                gap: 15px;
+            }
+
+            .logo img {
+                max-height: 40px;
+                max-width: 120px;
+            }
+
+            .grid-atuacao {
+                grid-template-columns: 1fr;
+            }
+
             .footer-container {
                 grid-template-columns: 1fr;
                 text-align: center;
                 gap: 50px;
             }
+
             .footer-col {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
-            .contact-info p { justify-content: center; }
-            .footer-logo { max-height: 120px; }
-            .bottom-container { flex-direction: column; gap: 15px; }
-            header .btn-gold { padding: 0.5rem 0.8rem !important; font-size: 0.65rem !important; white-space: nowrap; }
+
+            .contact-info p {
+                justify-content: center;
+            }
+
+            .footer-logo {
+                max-height: 120px;
+            }
+
+            .bottom-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            header .btn-gold {
+                padding: 0.5rem 0.8rem !important;
+                font-size: 0.65rem !important;
+                white-space: nowrap;
+            }
         }
 
         /* Estilo das Avaliações */
@@ -329,24 +573,33 @@
             top: 40px;
             right: 40px;
             font-size: 0.7rem;
-            color: rgba(255,255,255,0.2);
+            color: rgba(255, 255, 255, 0.2);
             display: flex;
             align-items: center;
             gap: 5px;
         }
 
         @media (max-width: 992px) {
-            .grid-reviews { grid-template-columns: repeat(2, 1fr); }
+            .grid-reviews {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .grid-reviews { grid-template-columns: 1fr; }
-            .card-review { padding: 30px; }
+            .grid-reviews {
+                grid-template-columns: 1fr;
+            }
+
+            .card-review {
+                padding: 30px;
+            }
         }
     </style>
 </head>
+
 <body>
 
+    <!-- Seção do Cabeçalho: Contém a logo, navegação principal e botão de contato -->
     <header>
         <div class="logo">
             <img src="imagens/logo.png" alt="Logo Rubens Sousa">
@@ -362,6 +615,7 @@
         <a href="https://wa.me/5583986217739" target="_blank" class="btn-gold" style="margin-top: 0; padding: 0.6rem 1.2rem;">Falar com Dr. Rubens</a>
     </header>
 
+    <!-- Overlay e Box para as Subpáginas de Detalhes (Saiba Mais) -->
     <div id="subpage-overlay" onclick="closeOutside(event)">
         <div class="btn-close-x" onclick="closePage()">×</div>
         <div class="subpage-box" id="subpage-box">
@@ -369,6 +623,7 @@
         </div>
     </div>
 
+    <!-- Seção Principal (Hero): Destaque inicial do site -->
     <section class="hero">
         <div class="hero-content" data-aos="fade-right">
             <span>Advogado</span>
@@ -378,6 +633,7 @@
         </div>
     </section>
 
+    <!-- Seção de Áreas de Atuação: Lista os serviços jurídicos oferecidos -->
     <section id="atuacao" style="background: var(--bg-accent);">
         <span class="section-tag">NOSSAS ÁREAS</span>
         <h2 class="section-title">Soluções Jurídicas Sob Medida</h2>
@@ -441,6 +697,7 @@
         </div>
     </section>
 
+    <!-- Seção da Equipe: Apresenta os profissionais do escritório -->
     <section id="equipe">
         <span class="section-tag">EQUIPE ESTRATÉGICA</span>
         <h2 class="section-title">Profissional Dedicado</h2>
@@ -453,6 +710,7 @@
         </div>
     </section>
 
+    <!-- Seção de Avaliações/Depoimentos: Mostra o feedback dos clientes -->
     <section id="avaliacoes" style="background: var(--bg-dark);">
         <span class="section-tag">DEPOIMENTOS</span>
         <h2 class="section-title">O que nossos clientes dizem</h2>
@@ -496,6 +754,7 @@
         </div>
     </section>
 
+    <!-- Seção de Perguntas Frequentes (FAQ) -->
     <section style="background: var(--bg-accent);">
         <h2 class="section-title">Perguntas Frequentes</h2>
         <div style="max-width: 800px; margin: 0 auto;">
@@ -510,6 +769,7 @@
         </div>
     </section>
 
+    <!-- Seção do Rodapé: Informações de contato, links institucionais e direitos autorais -->
     <footer id="contato" class="main-footer">
         <div class="footer-container">
             <div class="footer-col">
@@ -538,7 +798,7 @@
                 <h4>Contato</h4>
                 <div class="contact-info">
                     <p><i class="fas fa-phone-alt"></i> <a href="https://wa.me/5583986217739" target="_blank">(83) 98621-7739</a></p>
-                    <p><i class="fab fa-instagram"></i> <a href="#" target="_blank">@rubenssousa.adv</a></p>
+                    <p><i class="fab fa-instagram"></i> <a href="#">@rubenssousa.adv</a></p>
                     <p><i class="fas fa-envelope"></i> <a href="mailto:rubenssousa.adv@hotmail.com">rubenssousa.adv@hotmail.com</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> João Pessoa - PB</p>
                 </div>
@@ -554,21 +814,60 @@
         </div>
     </footer>
 
+    <!-- Scripts JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        // Inicializa a biblioteca AOS para animações de scroll
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
 
+        // Objeto 'conteudos' armazena os dados para cada subpágina dinâmica
         const conteudos = {
-            'rescisao': { tag: 'Direito do Trabalho', titulo: 'Rescisão Indireta', texto: 'A falta grave da empresa permite que você saia recebendo <strong>todos os seus direitos</strong>, como se tivesse sido demitido sem justa causa. Isso inclui FGTS com multa de 40%, aviso prévio e seguro-desemprego.' },
-            'periculosidade': { tag: 'Adicionais', titulo: 'Periculosidade', texto: 'Direito a um adicional de <strong>30% sobre o salário base</strong> para quem trabalha em condições de risco acentuado, como eletricidade ou inflamáveis.' },
-            'insalubridade': { tag: 'Saúde Ocupacional', titulo: 'Insalubridade', texto: 'Compensação pela exposição a agentes nocivos. Os graus variam entre <strong>10%, 20% ou 40%</strong> do salário mínimo.' },
-            'horas': { tag: 'Jornada', titulo: 'Horas Extras', texto: 'Qualquer minuto trabalhado além da jornada normal deve ser pago com adicional de, no mínimo, 50%. Analisamos bancos de horas ilegais.' },
-            'assedio': { tag: 'Danos Morais', titulo: 'Assédio Moral e Sexual', texto: 'Proteção contra abusos ou condutas vexatórias. Atuamos com sigilo absoluto para garantir sua <strong>dignidade e indenização</strong>.' },
-            'verbas': { tag: 'Cálculo', titulo: 'Verbas Rescisórias', texto: 'Conferência detalhada de saldo de salário, 13º, férias e multas por atraso no pagamento do acerto.' },
-            'justa': { tag: 'Defesa', titulo: 'Reversão de Justa Causa', texto: 'Se a demissão foi injusta ou sem provas robustas, buscamos a <strong>anulação judicial</strong> para restaurar seus direitos integrais.' },
-            'defesa': { tag: 'Consultivo', titulo: 'Defesa Trabalhista', texto: 'Estratégia jurídica para empresas e profissionais em litígios complexos e auditorias trabalhistas.' }
+            'rescisao': {
+                tag: 'Direito do Trabalho',
+                titulo: 'Rescisão Indireta',
+                texto: 'A falta grave da empresa permite que você saia recebendo <strong>todos os seus direitos</strong>, como se tivesse sido demitido sem justa causa. Isso inclui FGTS com multa de 40%, aviso prévio e seguro-desemprego.'
+            },
+            'periculosidade': {
+                tag: 'Adicionais',
+                titulo: 'Periculosidade',
+                texto: 'Direito a um adicional de <strong>30% sobre o salário base</strong> para quem trabalha em condições de risco acentuado, como eletricidade ou inflamáveis.'
+            },
+            'insalubridade': {
+                tag: 'Saúde Ocupacional',
+                titulo: 'Insalubridade',
+                texto: 'Compensação pela exposição a agentes nocivos. Os graus variam entre <strong>10%, 20% ou 40%</strong> do salário mínimo.'
+            },
+            'horas': {
+                tag: 'Jornada',
+                titulo: 'Horas Extras',
+                texto: 'Qualquer minuto trabalhado além da jornada normal deve ser pago com adicional de, no mínimo, 50%. Analisamos bancos de horas ilegais.'
+            },
+            'assedio': {
+                tag: 'Danos Morais',
+                titulo: 'Assédio Moral e Sexual',
+                texto: 'Proteção contra abusos ou condutas vexatórias. Atuamos com sigilo absoluto para garantir sua <strong>dignidade e indenização</strong>.'
+            },
+            'verbas': {
+                tag: 'Cálculo',
+                titulo: 'Verbas Rescisórias',
+                texto: 'Conferência detalhada de saldo de salário, 13º, férias e multas por atraso no pagamento do acerto.'
+            },
+            'justa': {
+                tag: 'Defesa',
+                titulo: 'Reversão de Justa Causa',
+                texto: 'Se a demissão foi injusta ou sem provas robustas, buscamos a <strong>anulação judicial</strong> para restaurar seus direitos integrais.'
+            },
+            'defesa': {
+                tag: 'Consultivo',
+                titulo: 'Defesa Trabalhista',
+                texto: 'Estratégia jurídica para empresas e profissionais em litígios complexos e auditorias trabalhistas.'
+            }
         };
 
+        // Função para abrir a subpágina com conteúdo dinâmico
         function openPage(id) {
             const data = conteudos[id];
             document.getElementById('subpage-dynamic-content').innerHTML = `
@@ -588,16 +887,22 @@
             document.body.style.overflow = 'hidden';
         }
 
+        // Função para fechar a subpágina
         function closePage() {
             document.getElementById('subpage-overlay').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
 
+        // Função para fechar a subpágina clicando fora da caixa de conteúdo
         function closeOutside(e) {
             if (e.target.id === 'subpage-overlay') closePage();
         }
 
-        window.onkeydown = (e) => { if (e.key === "Escape") closePage(); };
+        // Escuta a tecla 'Escape' para fechar a subpágina
+        window.onkeydown = (e) => {
+            if (e.key === "Escape") closePage();
+        };
     </script>
 </body>
+
 </html>
