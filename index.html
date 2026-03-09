@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"> <!-- Adicionado -->
     <link rel="shortcut icon" href="imagens/site.ico" type="image/x-icon">
 
     <style>
@@ -769,41 +770,32 @@
     <section id="avaliacoes" style="background: var(--bg-dark);">
         <span class="section-tag">DEPOIMENTOS</span>
         <h2 class="section-title">O que nossos clientes dizem</h2>
-        <div class="grid-reviews">
-            <div class="card-review" data-aos="fade-up">
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p>"Excelente profissional. Resolveu meu caso de rescisão indireta com muita agilidade e transparência. Recomendo muito o Dr. Rubens."</p>
-                <div class="client-info">
-                    <img src="https://ui-avatars.com/api/?name=João+Silva&background=c5a059&color=fff" alt="Cliente">
-                    <span>João Silva</span>
-                </div>
-                <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
-            </div>
-            <div class="card-review" data-aos="fade-up" data-aos-delay="100">
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p>"Tive todo o suporte necessário no meu processo de horas extras. A inteligência jurídica da equipe fez toda a diferença no resultado."</p>
-                <div class="client-info">
-                    <img src="https://ui-avatars.com/api/?name=Maria+Oliveira&background=c5a059&color=fff" alt="Cliente">
-                    <span>Maria Oliveira</span>
-                </div>
-                <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
-            </div>
-            <div class="card-review" data-aos="fade-up" data-aos-delay="200">
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p>"Atendimento impecável. O Dr. Rubens é muito atencioso e domina completamente a área trabalhista. Nota 10!"</p>
-                <div class="client-info">
-                    <img src="https://ui-avatars.com/api/?name=Ricardo+Souza&background=c5a059&color=fff" alt="Cliente">
-                    <span>Ricardo Souza</span>
-                </div>
-                <div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>
-            </div>
+
+        <div class="reviews-controls" style="text-align: center; margin-bottom: 30px;">
+            <label for="sort-reviews" style="color: var(--gold); margin-right: 10px;">Ordenar por:</label>
+            <select id="sort-reviews" style="background: var(--bg-accent); color: var(--white); border: 1px solid var(--gold); padding: 8px 12px; border-radius: 4px;">
+                <option value="relevantes">Mais relevantes</option>
+                <option value="recentes">Mais recentes</option>
+                <option value="maior-classificacao">Maior classificação</option>
+                <option value="menor-classificacao">Menor classificação</option>
+            </select>
         </div>
+
+        <!-- Slider main container -->
+        <div class="swiper-container mySwiper" style="padding: 0 50px;">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper" id="reviews-wrapper">
+                <!-- Avaliações serão carregadas aqui pelo JavaScript -->
+            </div>
+
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev" style="color: var(--gold);"></div>
+            <div class="swiper-button-next" style="color: var(--gold);"></div>
+        </div>
+
         <div style="text-align: center; margin-top: 40px;">
             <a href="#" target="_blank" class="btn-link">Ver todas as avaliações no Google</a>
         </div>
@@ -958,7 +950,423 @@
         window.onkeydown = (e) => {
             if (e.key === "Escape") closePage();
         };
+
+        // Array de avaliações dos clientes
+        const avaliacoesClientes = [
+            {
+                nome: 'João Paulo',
+                numAvaliacoes: 9,
+                tempoAtras: '4 meses atrás',
+                texto: 'Sou muito grato ao Dr. Rubens pela atenção, dedicação e profissionalismo com que conduziu minha causa. Sua postura segura e comprometida fez toda a diferença para que o resultado fosse positivo. Recomendo com total confiança.',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Davi morais',
+                numAvaliacoes: 2,
+                tempoAtras: '4 meses atrás',
+                texto: 'Minha experiência foi excelente, procurem esse advogado gente o melhor que já conheci, tirou todas as minhas dúvidas e foi um sucesso. Obg Rubens Souza o melhor advogado 👏🏼👏🏼👏🏼',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'FAMA DO MEDO',
+                numAvaliacoes: 1,
+                tempoAtras: '4 meses atrás',
+                texto: 'Foi satisfatório pois fui bem atendido tive todas as dúvidas esclarecidas e notei que o profissional estar sempre pronto a ajudar com dedicação e com satisfação.',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Junior',
+                numAvaliacoes: 1,
+                tempoAtras: '4 meses atrás',
+                texto: 'Dr Rubens é doutorado por excelência, abraça as causas com seriedade, comprometimento, sinceridade... Obrigado meu amigo!',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Seth Martins',
+                numAvaliacoes: 3,
+                tempoAtras: '3 meses atrás',
+                texto: 'Resolveu minha causa rápido. Já tinha até perdido a esperança. Recomendo demais.',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Jaciene Ferreira',
+                numAvaliacoes: 1,
+                tempoAtras: '4 meses atrás',
+                texto: 'Doutor Rubens é um advogado muito bom e bem capacitado e competente 👏👏👏',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Penha Tomaz',
+                numAvaliacoes: 3,
+                tempoAtras: '4 meses atrás',
+                texto: 'É muito competente e atencioso, até depois que terminou o contrato ele sempre nos atendeu 👏🏼👏🏼👏🏼',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Alysson Albert',
+                numAvaliacoes: 100,
+                tempoAtras: '4 meses atrás',
+                texto: 'Excelente atendimento e resolução de problemas. Faz de um caso complexo ser de fácil entendimento para leigos.',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true,
+                tipo: 'Local Guide'
+            },
+            {
+                nome: 'allain bruno silva',
+                numAvaliacoes: 2,
+                tempoAtras: '4 meses atrás',
+                texto: 'Excelente profissional. Comprometido e empenhado em fazer um trabalho de excelência. Indico demais a',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Hilton Carneiro',
+                numAvaliacoes: 1,
+                tempoAtras: '4 meses atrás',
+                texto: 'Excelente advogado, muito atencioso e eficiente, recomendo geral',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Daniel Rodrigues',
+                numAvaliacoes: 1,
+                tempoAtras: '4 meses atrás',
+                texto: 'Um excelente advogado gostei de mais do trabalho dele',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Leandro Jesus',
+                numAvaliacoes: 1,
+                tempoAtras: 'um ano atrás',
+                texto: 'O Dr Rubens Sousa é um advogado extremamente competente e atencioso! O atendimento foi excelente e ele me orientou de forma clara e objetiva durante todo o processo, sempre me mantendo informado sobre o desenvolvimento do caso. O resultado …Mais',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Robson xDaniele',
+                numAvaliacoes: 8,
+                tempoAtras: '4 meses atrás',
+                texto: 'Um advogado extremamente preparado e primeiro de tudo um ser humano que realmente se importa com o próximo.',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true,
+                tipo: 'Local Guide'
+            },
+            {
+                nome: 'Gleucia Abreu',
+                numAvaliacoes: 21,
+                tempoAtras: 'um ano atrás',
+                texto: 'Um excelente advogado! Diferenciado, atencioso e comprometido, ele explica cada detalhe do processo com clareza e profissionalismo. Com inteligência, ética e determinação, realiza um trabalho incrível. O mundo precisa de mais profissionais como você!',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true,
+                tipo: 'Local Guide'
+            },
+            {
+                nome: 'Thalison Tavares',
+                numAvaliacoes: 1,
+                tempoAtras: 'um ano atrás',
+                texto: 'Um brilhante atendimento, sempre sendo atualizado em cada momentos. Uma atenção satisfatória e paciência de explicar, ensinar e ajudar. Muito grato ao atendimento do meu advogado Rubens Sousa.',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Selma do Nascimento Santos',
+                numAvaliacoes: 1,
+                tempoAtras: 'um ano atrás',
+                texto: 'Me senti assistida e confiante em entregar minha causa à um profissional competente e dedicado!',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'manoel messias',
+                numAvaliacoes: 3,
+                tempoAtras: 'um ano atrás',
+                texto: 'Top demais ,excelência no atendimento e um belo trabalho bem elaborado com profissionalismo....',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Wellington Neves',
+                numAvaliacoes: 1,
+                tempoAtras: '4 meses atrás',
+                texto: 'Recomendo atendimento é ótimo',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'yzyzux Alves',
+                numAvaliacoes: 2,
+                tempoAtras: '4 meses atrás',
+                texto: 'Muito bom',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Samuel Messias',
+                numAvaliacoes: 3,
+                tempoAtras: '4 meses atrás',
+                texto: 'Excelentes profissionais',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Paulo Silva Santos',
+                numAvaliacoes: 2,
+                tempoAtras: '4 meses atrás',
+                texto: 'O cara e top',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Alexsandro Gomes de Araújo',
+                numAvaliacoes: 1,
+                tempoAtras: '4 meses atrás',
+                texto: 'Excelente atendimento',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Wellington',
+                numAvaliacoes: 1,
+                tempoAtras: 'um ano atrás',
+                texto: 'Perfeita eu recomendo',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Ricardo Santos macena',
+                numAvaliacoes: 1, 
+                tempoAtras: '4 meses atrás',
+                texto: '', 
+                estrelas: 5, 
+                emojis: '', 
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Lopes L.',
+                numAvaliacoes: 3,
+                tempoAtras: '4 meses atrás',
+                texto: '',
+                estrelas: 5,
+                emojis: '',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Elton John',
+                numAvaliacoes: 2,
+                tempoAtras: '4 meses atrás',
+                texto: '',
+                estrelas: 5,
+                emojis: '',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Elayne Marcelly',
+                numAvaliacoes: null, 
+                tempoAtras: '4 meses atrás',
+                texto: '',
+                estrelas: 5,
+                emojis: '',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Alexandreboy@gmail.com Alexandreboy',
+                numAvaliacoes: 1,
+                tempoAtras: '4 meses atrás',
+                texto: '',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'sergio Nathan',
+                numAvaliacoes: 2,
+                tempoAtras: '4 meses atrás',
+                texto: '',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Oliveira Barros',
+                numAvaliacoes: null, 
+                tempoAtras: '4 meses atrás',
+                texto: '',
+                estrelas: 5,
+                emojis: '',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Ramonilson Moreira',
+                numAvaliacoes: 1,
+                tempoAtras: 'um ano atrás',
+                texto: '',
+                estrelas: 5,
+                emojis: '🙏1',
+                verificadoGoogle: true
+            },
+            {
+                nome: 'Lucas Matheus',
+                numAvaliacoes: null, 
+                tempoAtras: 'um ano atrás',
+                texto: '',
+                estrelas: 5,
+                emojis: '',
+                verificadoGoogle: true
+            }
+        ];
+
+        // Função para renderizar as avaliações
+        function renderReviews(reviews) {
+            const reviewsWrapper = document.getElementById('reviews-wrapper');
+            reviewsWrapper.innerHTML = ''; // Limpa o conteúdo existente
+
+            reviews.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.classList.add('swiper-slide');
+                reviewCard.classList.add('card-review'); // Mantém o estilo do card
+                reviewCard.setAttribute('data-aos', 'fade-up'); // Adiciona a animação AOS
+
+                // Constrói as estrelas
+                let starsHtml = '';
+                for (let i = 0; i < review.estrelas; i++) {
+                    starsHtml += '<i class="fas fa-star"></i>';
+                }
+
+                reviewCard.innerHTML = `
+                    <div class="stars">${starsHtml}</div>
+                    <p>"${review.texto}"</p>
+                    <div class="client-info">
+                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(review.nome)}&background=c5a059&color=fff" alt="Cliente">
+                        <span>${review.nome}</span>
+                    </div>
+                    ${review.verificadoGoogle ? `<div class="google-verify"><i class="fab fa-google"></i> Avaliação do Google</div>` : ''}
+                `;
+                reviewsWrapper.appendChild(reviewCard);
+            });
+
+            // Inicializa ou atualiza o Swiper
+            if (window.mySwiper) {
+                window.mySwiper.destroy(true, true); // Destroi a instância existente para evitar duplicatas
+            }
+            window.mySwiper = new Swiper('.mySwiper', {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                loop: true, // Habilitar loop para autoplay contínuo
+                autoplay: {
+                    delay: 2500, // Tempo de espera entre os slides (2.5 segundos)
+                    disableOnInteraction: false, // Continua autoplay mesmo após interação do usuário
+                    reverseDirection: true // Faz o slide rolar para a esquerda
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    992: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                },
+            });
+        }
+
+        // Função auxiliar para parsear "tempo atrás" (muito simplificada para esta demonstração)
+        function parseTimeAgo(timeAgoString) {
+            if (!timeAgoString) return 0; // Valor padrão para avaliações sem tempo
+            const parts = timeAgoString.split(' ');
+            const value = parseInt(parts[0]);
+            const unit = parts[1];
+
+            if (unit.includes('mês')) {
+                return value * 30; // Converter meses para dias (aproximado)
+            } else if (unit.includes('ano')) {
+                return value * 365; // Converter anos para dias (aproximado)
+            }
+            return 0; // Se não conseguir parsear, considerar 0 dias
+        }
+
+        // Função para ordenar as avaliações
+        function sortReviews(criteria) {
+            let sortedReviews = [...avaliacoesClientes]; // Cria uma cópia para não modificar o original
+            switch (criteria) {
+                case 'recentes':
+                    sortedReviews.sort((a, b) => {
+                        const timeA = parseTimeAgo(a.tempoAtras);
+                        const timeB = parseTimeAgo(b.tempoAtras);
+                        return timeA - timeB; 
+                    });
+                    break;
+                case 'maior-classificacao':
+                    sortedReviews.sort((a, b) => b.estrelas - a.estrelas);
+                    break;
+                case 'menor-classificacao':
+                    sortedReviews.sort((a, b) => a.estrelas - b.estrelas);
+                    break;
+                case 'relevantes':
+                default:
+                    sortedReviews = [...avaliacoesClientes]; // Mantém a ordem original
+                    break;
+            }
+            renderReviews(sortedReviews);
+        }
+
+        // Event listener para o seletor de ordenação
+        document.addEventListener('DOMContentLoaded', () => {
+            const sortSelect = document.getElementById('sort-reviews');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', (event) => {
+                    sortReviews(event.target.value);
+                });
+            }
+
+            // Renderiza as avaliações inicialmente (mais relevantes por padrão)
+            sortReviews('relevantes');
+        });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> <!-- Adicionado -->
 </body>
 
 </html>
