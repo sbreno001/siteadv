@@ -412,10 +412,25 @@
             gap: 12px;
         }
 
+        .contact-info p a { /* Estilo para os links de contato */
+            transition: color 0.3s ease, transform 0.3s ease; /* Transição para cor e transformação */
+        }
+
+        .contact-info p a:hover {
+            color: var(--gold); /* Mudar a cor ao passar o mouse */
+            transform: translateX(5px); /* Deslizar ligeiramente para a direita */
+        }
+
         .contact-info i {
             color: var(--gold);
             width: 18px;
             text-align: center;
+            transition: color 0.3s ease, transform 0.3s ease; /* Transição para cor e transformação do ícone */
+        }
+
+        .contact-info p a:hover i {
+            color: var(--white); /* Mudar a cor do ícone ao passar o mouse sobre o link */
+            transform: scale(1.1); /* Aumentar ligeiramente o ícone */
         }
 
         .footer-bottom {
@@ -448,6 +463,39 @@
             nav a {
                 font-size: 0.8rem;
                 letter-spacing: 1px;
+                position: relative;
+                padding-bottom: 5px; /* Espaço para o underline */
+                transition: color 0.3s ease; /* Transição suave para a cor */
+            }
+
+            nav a::after {
+                content: '';
+                position: absolute;
+                width: 0%;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: var(--gold); /* Cor do underline */
+                transition: width 0.3s ease; /* Animação de largura */
+            }
+
+            nav a:hover {
+                color: var(--gold); /* Mudar cor do texto ao hover */
+            }
+
+            nav a:hover::after {
+                width: 100%; /* Expandir o underline ao hover */
+            }
+
+            /* Efeito de hover para o botão do cabeçalho */
+            header .btn-gold {
+                transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            header .btn-gold:hover {
+                background-color: var(--white); /* Mudar a cor de fundo */
+                color: var(--bg-dark); /* Mudar a cor do texto */
+                box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4); /* Adicionar sombra */
             }
 
             .hero-content h1 {
@@ -798,7 +846,8 @@
                 <h4>Contato</h4>
                 <div class="contact-info">
                     <p><i class="fas fa-phone-alt"></i> <a href="https://wa.me/5583986217739" target="_blank">(83) 98621-7739</a></p>
-                    <p><i class="fab fa-instagram"></i> <a href="#">@rubenssousa.adv</a></p>
+                    <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/pontocegotrabalhista/" target="_blank">@rubenssousa.adv</a></p>
+                    <p><i class="fab fa-tiktok"></i> <a href="https://www.tiktok.com/@pontocegotrabalhista" target="_blank">@pontocegotrabalhista</a></p>
                     <p><i class="fas fa-envelope"></i> <a href="mailto:rubenssousa.adv@hotmail.com">rubenssousa.adv@hotmail.com</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> João Pessoa - PB</p>
                 </div>
@@ -828,7 +877,7 @@
             'rescisao': {
                 tag: 'Direito do Trabalho',
                 titulo: 'Rescisão Indireta',
-                texto: 'A falta grave da empresa permite que você saia recebendo <strong>todos os seus direitos</strong>, como se tivesse sido demitido sem justa causa. Isso inclui FGTS com multa de 40%, aviso prévio e seguro-desemprego.'
+                texto: 'Quando o trabalhador não deseja mais continuar na empresa, muita gente acredita que a única saída é pedir demissão.\n\nMas existe outra possibilidade chamada <strong>rescisão indireta</strong>.\n\nEla acontece quando a empresa começa a descumprir regras básicas do trabalho. Por exemplo: não assina a carteira de trabalho, atrasa o pagamento do salário, deixa de depositar o FGTS, não paga adicional de insalubridade ou periculosidade, exige horas extras sem pagamento ou não concede férias.\n\nEssas são apenas algumas das situações. Existem muitas outras hipóteses em que é possível reconhecer que a empresa está agindo de forma errada.\n\nPor isso, pedir demissão muitas vezes acaba beneficiando justamente a empresa que descumpriu suas obrigações.\n\nAntes de tomar qualquer decisão, procure orientação.\n\n<strong>Não peça demissão antes de conversar com um advogado especializado em direito do trabalho.</strong>'
             },
             'periculosidade': {
                 tag: 'Adicionais',
