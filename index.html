@@ -386,6 +386,49 @@
             color: var(--text-gray);
         }
 
+        /* Estilos para o Acordeão (FAQ) */
+        .faq-question {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1); /* Linha divisória */
+        }
+
+        .faq-question h4 {
+            margin-bottom: 0; /* Remover margem inferior padrão do h4 */
+            color: var(--gold);
+            flex-grow: 1; /* Permite que o texto da pergunta ocupe o espaço */
+        }
+
+        .faq-question .icon {
+            font-size: 1.2rem;
+            color: var(--gold);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .icon {
+            transform: rotate(45deg); /* Gira o ícone quando a resposta está aberta */
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out; /* Animação suave */
+            padding-top: 0;
+            padding-bottom: 0;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .faq-answer.active {
+            max-height: 500px; /* Aumenta a altura máxima para a animação */
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
         /* --- RODAPÉ (Footer) --- */
         /* Container principal do rodapé */
         .main-footer {
@@ -855,32 +898,89 @@
         <h2 class="section-title">Perguntas Frequentes</h2>
         <div style="max-width: 800px; margin: 0 auto;">
             <div class="faq-item" data-aos="fade-up">
-                <h4>Se eu pedir demissão, quais direitos eu recebo?</h4>
-                <p>Quando o trabalhador pede demissão, ele recebe apenas parte das verbas trabalhistas. Normalmente são pagos o saldo de salário, férias vencidas ou proporcionais e o 13º proporcional. Por outro lado, alguns direitos não são devidos nesse caso, como o saque do FGTS e a multa sobre o FGTS. Por isso, antes de tomar essa decisão, é importante entender bem a situação. Converse com um advogado especializado em direito do trabalho antes de pedir demissão.</p>
+                <div class="faq-question">
+                    <h4>Se eu pedir demissão, quais direitos eu recebo?</h4>
+                    <i class="fas fa-plus icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Quando o trabalhador pede demissão, ele recebe apenas parte das verbas trabalhistas.</p>
+                    <p>Normalmente são pagos o saldo de salário, férias vencidas ou proporcionais e o 13º proporcional.</p>
+                    <p>Por outro lado, alguns direitos não são devidos nesse caso, como o saque do FGTS e a multa sobre o FGTS.</p>
+                    <p>Por isso, antes de tomar essa decisão, é importante entender bem a situação.</p>
+                    <p>Converse com um advogado especializado em direito do trabalho antes de pedir demissão.</p>
+                </div>
             </div>
             <div class="faq-item" data-aos="fade-up">
-                <h4>A empresa pode me demitir sem motivo?</h4>
-                <p>Sim. No Brasil, a empresa pode encerrar o contrato de trabalho sem apresentar um motivo específico, desde que pague corretamente todas as verbas da demissão sem justa causa. Isso inclui, por exemplo, aviso prévio, saque do FGTS, multa sobre o FGTS, férias e 13º proporcional. Se algum desses valores não for pago corretamente, o trabalhador pode buscar seus direitos. Um advogado especializado em direito do trabalho pode analisar a rescisão e verificar se o pagamento foi feito de forma correta.</p>
+                <div class="faq-question">
+                    <h4>A empresa pode me demitir sem motivo?</h4>
+                    <i class="fas fa-plus icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Sim. No Brasil, a empresa pode encerrar o contrato de trabalho sem apresentar um motivo específico, desde que pague corretamente todas as verbas da demissão sem justa causa.</p>
+                    <p>Isso inclui, por exemplo, aviso prévio, saque do FGTS, multa sobre o FGTS, férias e 13º proporcional.</p>
+                    <p>Se algum desses valores não for pago corretamente, o trabalhador pode buscar seus direitos.</p>
+                    <p>Um advogado especializado em direito do trabalho pode analisar a rescisão e verificar se o pagamento foi feito de forma correta.</p>
+                </div>
             </div>
             <div class="faq-item" data-aos="fade-up">
-                <h4>Posso trabalhar em dois empregos ao mesmo tempo?</h4>
-                <p>Na maioria dos casos, sim. A legislação trabalhista não proíbe que uma pessoa tenha mais de um emprego. O que deve ser observado é se existe alguma cláusula de exclusividade no contrato de trabalho ou se os horários são incompatíveis. Também é importante evitar situações em que um trabalho prejudique o desempenho no outro. Se houver dúvidas sobre o contrato ou possíveis restrições, procure orientação de um advogado trabalhista.</p>
+                <div class="faq-question">
+                    <h4>Posso trabalhar em dois empregos ao mesmo tempo?</h4>
+                    <i class="fas fa-plus icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Na maioria dos casos, sim. A legislação trabalhista não proíbe que uma pessoa tenha mais de um emprego.</p>
+                    <p>O que deve ser observado é se existe alguma cláusula de exclusividade no contrato de trabalho ou se os horários são incompatíveis.</p>
+                    <p>Também é importante evitar situações em que um trabalho prejudique o desempenho no outro.</p>
+                    <p>Se houver dúvidas sobre o contrato ou possíveis restrições, procure orientação de um advogado trabalhista.</p>
+                </div>
             </div>
             <div class="faq-item" data-aos="fade-up">
-                <h4>A empresa não está depositando meu FGTS. O que posso fazer?</h4>
-                <p>O depósito do FGTS é obrigação da empresa durante todo o contrato de trabalho. Quando esses valores não são depositados, o trabalhador pode buscar o reconhecimento do direito e a regularização dos depósitos. Além disso, em alguns casos, a falta de depósito do FGTS pode gerar outras consequências legais para a empresa. Se você percebeu que seu FGTS não está sendo depositado corretamente, procure orientação de um advogado trabalhista.</p>
+                <div class="faq-question">
+                    <h4>A empresa não está depositando meu FGTS. O que posso fazer?</h4>
+                    <i class="fas fa-plus icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>O depósito do FGTS é obrigação da empresa durante todo o contrato de trabalho.</p>
+                    <p>Quando esses valores não são depositados, o trabalhador pode buscar o reconhecimento do direito e a regularização dos depósitos.</p>
+                    <p>Além disso, em alguns casos, a falta de depósito do FGTS pode gerar outras consequências legais para a empresa.</p>
+                    <p>Se você percebeu que seu FGTS não está sendo depositado corretamente, procure orientação de um advogado trabalhista.</p>
+                </div>
             </div>
             <div class="faq-item" data-aos="fade-up">
-                <h4>Faço horas extras todos os dias e não recebo por isso. Isso está certo?</h4>
-                <p>Não. Quando o trabalhador ultrapassa a jornada normal de trabalho, essas horas devem ser pagas como horas extras ou compensadas corretamente. Muitas empresas exigem jornadas maiores sem registrar ou pagar essas horas. Com o tempo, essas horas acumuladas podem representar valores significativos que deixaram de ser pagos ao trabalhador. Um advogado trabalhista pode analisar a situação e verificar se existe direito ao pagamento dessas horas.</p>
+                <div class="faq-question">
+                    <h4>Faço horas extras todos os dias e não recebo por isso. Isso está certo?</h4>
+                    <i class="fas fa-plus icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Não. Quando o trabalhador ultrapassa a jornada normal de trabalho, essas horas devem ser pagas como horas extras ou compensadas corretamente.</p>
+                    <p>Muitas empresas exigem jornadas maiores sem registrar ou pagar essas horas.</p>
+                    <p>Com o tempo, essas horas acumuladas podem representar valores significativos que deixaram de ser pagos ao trabalhador.</p>
+                    <p>Um advogado trabalhista pode analisar a situação e verificar se existe direito ao pagamento dessas horas.</p>
+                </div>
             </div>
             <div class="faq-item" data-aos="fade-up">
-                <h4>Trabalhei sem carteira assinada. Tenho algum direito?</h4>
-                <p>Sim. Mesmo sem registro na carteira de trabalho, o trabalhador pode ter direito ao reconhecimento do vínculo de emprego. Quando isso acontece, a empresa pode ser obrigada a pagar FGTS, férias, 13º salário, horas extras e outras verbas trabalhistas. O fato de não ter registro na carteira não retira os direitos do trabalhador. Se você trabalhou sem registro, procure orientação de um advogado especializado em direito do trabalho.</p>
+                <div class="faq-question">
+                    <h4>Trabalhei sem carteira assinada. Tenho algum direito?</h4>
+                    <i class="fas fa-plus icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Sim. Mesmo sem registro na carteira de trabalho, o trabalhador pode ter direito ao reconhecimento do vínculo de emprego.</p>
+                    <p>Quando isso acontece, a empresa pode ser obrigada a pagar FGTS, férias, 13º salário, horas extras e outras verbas trabalhistas.</p>
+                    <p>O fato de não ter registro na carteira não retira os direitos do trabalhador.</p>
+                    <p>Se você trabalhou sem registro, procure orientação de um advogado especializado em direito do trabalho.</p>
+                </div>
             </div>
             <div class="faq-item" data-aos="fade-up">
-                <h4>Fui demitido por justa causa, mas acho que foi injusto. O que posso fazer?</h4>
-                <p>A justa causa é a punição mais grave dentro da relação de trabalho e só pode ser aplicada em situações realmente graves e comprovadas. Quando a empresa aplica a justa causa de forma indevida, é possível buscar a reversão da justa causa. Se isso acontecer, a demissão pode ser convertida em demissão sem justa causa, garantindo ao trabalhador os direitos que foram negados. Um advogado trabalhista pode analisar a situação e verificar se houve abuso por parte da empresa.</p>
+                <div class="faq-question">
+                    <h4>Fui demitido por justa causa, mas acho que foi injusto. O que posso fazer?</h4>
+                    <i class="fas fa-plus icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>A justa causa é a punição mais grave dentro da relação de trabalho e só pode ser aplicada em situações realmente graves e comprovadas.</p>
+                    <p>Quando a empresa aplica a justa causa de forma indevida, é possível buscar a reversão da justa causa.</p>
+                    <p>Se isso acontecer, a demissão pode ser convertida em demissão sem justa causa, garantindo ao trabalhador os direitos que foram negados.</p>
+                    <p>Um advogado trabalhista pode analisar a situação e verificar se houve abuso por parte da empresa.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1024,6 +1124,20 @@
         window.onkeydown = (e) => {
             if (e.key === "Escape") closePage();
         };
+
+        // Funcionalidade de Acordeão para o FAQ
+
+        document.querySelectorAll('.faq-question').forEach((item, index) => {
+            item.addEventListener('click', () => {
+                const faqItem = item.closest('.faq-item');
+                const answer = faqItem.querySelector('.faq-answer');
+                const icon = faqItem.querySelector('.icon');
+
+                // Toggle da classe 'active' para a resposta e o ícone
+                answer.classList.toggle('active');
+                item.classList.toggle('active'); // Adiciona/remove active na pergunta para girar o ícone
+            });
+        });
 
         // Array de objetos contendo os dados das avaliações dos clientes
         // Cada objeto representa uma avaliação com nome, texto, estrelas, etc.
@@ -1367,7 +1481,12 @@
             const sortSelect = document.getElementById('sort-reviews');
             if (sortSelect) {
                 sortSelect.addEventListener('change', (event) => {
-                    sortReviews(event.target.value);
+                    // Verifica se está em mobile (largura menor ou igual a 768px)
+                    if (window.innerWidth <= 768) {
+                        sortReviews('relevantes'); // Em mobile, sempre reseta para "Mais relevantes"
+                    } else {
+                        sortReviews(event.target.value); // Em desktop, aplica a ordenação selecionada
+                    }
                 });
             }
 
