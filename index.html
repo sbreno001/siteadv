@@ -367,6 +367,312 @@
             margin-top: 5px;
         }
 
+        /* --- MODAL DE PERFIL DETALHADO --- */
+        /* Container principal do modal - funciona como página sobreposta */
+        .profile-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            z-index: 1999; /* Fica abaixo do header do modal */
+            display: none; /* Escondido por padrão */
+            overflow-y: auto;
+            animation: slideInModal 0.5s ease forwards;
+        }
+
+        /* Animação suave de entrada do modal */
+        @keyframes slideInModal {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animação de saída suave */
+        .profile-modal.closing {
+            animation: slideOutModal 0.4s ease forwards;
+        }
+
+        @keyframes slideOutModal {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        /* Header do modal com botões de navegação */
+        .profile-modal-header {
+            position: sticky;
+            top: 0;
+            padding: 1.5rem 5%;
+            background: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        /* Botão voltar no header */
+        .profile-close-btn {
+            color: var(--gold);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .profile-close-btn:hover {
+            color: var(--white);
+            transform: translateX(-5px);
+        }
+
+        /* Botão X de fechar */
+        .profile-close-btn-x {
+            color: var(--gold);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .profile-close-btn-x:hover {
+            color: var(--white);
+            transform: rotate(90deg);
+        }
+
+        /* Conteúdo principal do modal - layout flexbox para foto e texto lado a lado */
+        .profile-modal-content {
+            display: flex;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 5%;
+            align-items: flex-start;
+        }
+
+        /* Coluna da imagem */
+        .profile-modal-image {
+            flex: 0 0 300px; /* Largura fixa da imagem */
+            position: sticky;
+            top: 100px; /* Fica abaixo do header */
+        }
+
+        .profile-modal-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Coluna do texto - conteúdo principal */
+        .profile-modal-text {
+            flex: 1;
+            min-width: 0; /* Evita que o flex causue overflow */
+        }
+
+        /* Cabeçalho do perfil com tag, nome e subtítulo */
+        .profile-modal-header-content {
+            border-left: 3px solid var(--gold);
+            padding-left: 20px;
+            margin-bottom: 40px;
+        }
+
+        .profile-tag {
+            color: var(--gold);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .profile-modal-header-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .profile-subtitle {
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Seções de conteúdo (Especializações, Atuação, etc) */
+        .profile-section {
+            margin-bottom: 35px;
+        }
+
+        .profile-section h3 {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .profile-section h3::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        /* Lista de itens (especializações e atuações) */
+        .profile-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .profile-list li {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        /* Bullet point elegante para cada item */
+        .profile-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Citação inspiradora */
+        .profile-quote {
+            background: rgba(197, 160, 89, 0.05);
+            border-left: 3px solid var(--gold);
+            padding: 25px;
+            padding-left: 20px;
+            margin: 35px 0;
+            border-radius: 4px;
+        }
+
+        .profile-quote p {
+            color: var(--white);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .profile-quote p:first-child {
+            margin-bottom: 15px;
+        }
+
+        .quote-author {
+            color: var(--gold);
+            font-size: 0.9rem !important;
+            font-style: normal !important;
+            font-weight: 600;
+        }
+
+        /* Chamada para ação */
+        .profile-cta {
+            background: rgba(197, 160, 89, 0.08);
+            padding: 30px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 4px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .profile-cta p {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Responsividade para tablets e dispositivos menores */
+        @media (max-width: 1024px) {
+            .profile-modal-content {
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px 5%;
+            }
+
+            .profile-modal-image {
+                flex: none;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+                position: static;
+            }
+
+            .profile-modal-header-content h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Responsividade para mobile */
+        @media (max-width: 768px) {
+            .profile-modal-header {
+                padding: 1rem 5%;
+            }
+
+            .profile-modal-content {
+                padding: 30px 5%;
+                gap: 25px;
+            }
+
+            .profile-close-btn {
+                font-size: 0.8rem;
+            }
+
+            .profile-close-btn-x {
+                width: 35px;
+                height: 35px;
+                font-size: 1.5rem;
+            }
+
+            .profile-modal-image {
+                max-width: 250px;
+            }
+
+            .profile-modal-header-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .profile-tag {
+                font-size: 0.7rem;
+            }
+
+            .profile-list li {
+                font-size: 0.9rem;
+            }
+
+            .profile-quote p {
+                font-size: 1rem;
+            }
+        }
+
         /* --- Seção FAQ (Perguntas Frequentes) --- */
         /* Item individual de FAQ */
         .faq-item {
@@ -777,6 +1083,68 @@
         </div>
     </div>
 
+    <!-- Modal de Perfil Detalhado do Dr. Rubens -->
+    <div id="profile-modal" class="profile-modal">
+        <!-- Header com botões de navegação -->
+        <div class="profile-modal-header">
+            <div class="profile-close-btn" onclick="closeProfileModal()">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </div>
+            <div class="profile-close-btn-x" onclick="closeProfileModal()">×</div>
+        </div>
+
+        <!-- Conteúdo principal com foto e texto lado a lado -->
+        <div class="profile-modal-content">
+            <!-- Coluna da esquerda - Foto do especialista -->
+            <div class="profile-modal-image">
+                <img src="imagens/rubens.png" alt="Dr. Rubens Sousa">
+            </div>
+
+            <!-- Coluna da direita - Informações profissionais e texto -->
+            <div class="profile-modal-text">
+                <!-- Cabeçalho com tag e nome -->
+                <div class="profile-modal-header-content">
+                    <span class="profile-tag">Perfil Profissional</span>
+                    <h2>Dr. Rubens Sousa</h2>
+                    <p class="profile-subtitle">Especialista em Advocacia Trabalhista</p>
+                </div>
+
+                <!-- Seção de especialização -->
+                <div class="profile-section">
+                    <h3>Especializações</h3>
+                    <ul class="profile-list">
+                        <li>Pós Graduado em Direito do Trabalho | FMP - Fundação Escola Superior do Ministério Público</li>
+                        <li>Pós Graduado em Processo do Trabalho | FMP - Fundação Escola Superior do Ministério Público</li>
+                        <li>Pós Graduado em Direito Previdenciário | FMP - Fundação Escola Superior do Ministério Público</li>
+                        <li>Pós Graduado em Direito Civil | FMP - Fundação Escola Superior do Ministério Público</li>
+                        <li>Pós Graduado em Processo Civil | FMP - Fundação Escola Superior do Ministério Público</li>
+                    </ul>
+                </div>
+
+                <!-- Citação inspiradora -->
+                <div class="profile-quote">
+                    <p>"Teu dever é lutar pelo Direito, mas se um dia encontrares o Direito em conflito com a Justiça, <strong>luta pela Justiça</strong>"</p>
+                    <p class="quote-author">- Eduardo Juan Couture</p>
+                </div>
+
+                <!-- Seção de atuação -->
+                <div class="profile-section">
+                    <h3>Atuação</h3>
+                    <ul class="profile-list">
+                        <li>Tribunais Regionais do Trabalho (TRTs)</li>
+                        <li>Tribunal Superior do Trabalho (TST)</li>
+                    </ul>
+                </div>
+
+                <!-- Chamada para ação -->
+                <div class="profile-cta">
+                    <p>Pronto para resolver sua causa trabalhista?</p>
+                    <a href="https://wa.me/5583986217739" target="_blank" class="btn-gold">Fale com o Dr. Rubens</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Seção Principal (Hero): Destaque inicial do site -->
     <section class="hero">
         <div class="hero-content" data-aos="fade-right">
@@ -860,6 +1228,8 @@
                 <img src="imagens/rubens.png">
                 <h4>Dr. Rubens Sousa</h4>
                 <p>Especialista em Advocacia Trabalhista</p>
+                <!-- Botão Saiba Mais que abre a seção de perfil detalhado -->
+                <span class="btn-link" onclick="openProfileModal()">Saiba Mais <i class="fas fa-arrow-right"></i></span>
             </div>
         </div>
     </section>
@@ -1124,6 +1494,55 @@
         window.onkeydown = (e) => {
             if (e.key === "Escape") closePage();
         };
+
+        /* ========== FUNÇÕES DO MODAL DE PERFIL DO DR. RUBENS ========== */
+
+        // Função para abrir o modal de perfil detalhado
+        // Exibe o modal com animação suave e desabilita a rolagem da página principal
+        function openProfileModal() {
+            const modal = document.getElementById('profile-modal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Impede scroll da página ao fundo
+            
+            // Força reflow para ativar a animação
+            modal.offsetHeight;
+        }
+
+        // Função para fechar o modal de perfil
+        // Aplica animação de saída e então oculta o modal
+        function closeProfileModal() {
+            const modal = document.getElementById('profile-modal');
+            
+            // Adiciona classe de animação de saída
+            modal.classList.add('closing');
+            
+            // Aguarda a animação terminar antes de ocultar
+            setTimeout(() => {
+                modal.style.display = 'none';
+                modal.classList.remove('closing');
+                document.body.style.overflow = 'auto'; // Reabilita scroll
+            }, 400); // Tempo da animação em milissegundos
+        }
+
+        // Fechar o modal quando clicar fora dele (no fundo escuro)
+        // Evento delegado para o documento para fechar quando clicar em qualquer lugar fora do conteúdo
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('profile-modal');
+            if (e.target === modal && modal.style.display === 'block') {
+                closeProfileModal();
+            }
+        });
+
+        // Fechar o modal ao pressionar a tecla 'Escape'
+        // Adiciona uma escuta global para a tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('profile-modal');
+                if (modal.style.display === 'block') {
+                    closeProfileModal();
+                }
+            }
+        });
 
         // Funcionalidade de Acordeão para o FAQ
 
