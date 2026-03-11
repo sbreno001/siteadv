@@ -640,6 +640,20 @@
             .profile-modal-content {
                 padding: 30px 5%;
                 gap: 25px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* Reposiciona a foto para vir em primeiro lugar no mobile */
+            .profile-modal-image {
+                order: -1;
+                max-width: 100%;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .profile-modal-text {
+                order: 1;
             }
 
             .profile-close-btn {
@@ -650,10 +664,6 @@
                 width: 35px;
                 height: 35px;
                 font-size: 1.5rem;
-            }
-
-            .profile-modal-image {
-                max-width: 250px;
             }
 
             .profile-modal-header-content h2 {
