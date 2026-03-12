@@ -243,6 +243,7 @@
             z-index: 2000; /* Garante que fique acima de tudo */
             display: none; /* Escondido por padrão */
             overflow-y: auto; /* Permite rolagem se o conteúdo for grande */
+            overscroll-behavior: contain; /* Impede que o scroll vaze para o fundo quando termina */
             backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
         }
 
@@ -379,6 +380,7 @@
             z-index: 1999; /* Fica abaixo do header do modal */
             display: none; /* Escondido por padrão */
             overflow-y: auto;
+            overscroll-behavior: contain; /* Impede que o scroll vaze para o fundo quando termina */
             animation: slideInModal 0.5s ease forwards;
         }
 
